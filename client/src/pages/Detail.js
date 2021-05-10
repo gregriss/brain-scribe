@@ -32,7 +32,7 @@ function Detail(props) {
           <article>
             <h1>Idea Content</h1>
             <p>
-              {book.content}
+              {idea.content}
             </p>
           </article>
         </Col>
