@@ -8,7 +8,7 @@ function Nav() {
   const [loginExpanded, setLoginExpanded] = useState(false);
   const { email, loggedIn } = useContext(UserContext);
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav className="navbar navbar-expand-lg navbar-light" style={{ background: 'hsl(215, 100%, 75%)' }}>
       <a className="navbar-brand" href="/">
         BrainScribe
       </a>
