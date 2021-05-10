@@ -1,6 +1,6 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Books from "./pages/Books";
+import Ideas from "./pages/Ideas";
 import Detail from "./pages/Detail";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
@@ -14,14 +14,14 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   return (
     <Router>
-      <UserContext.Provider value={{email, setEmail, loggedIn, setLoggedIn}}>
+      <UserContext.Provider value={{ email, setEmail, loggedIn, setLoggedIn }}>
         <div>
           <Nav />
           <Switch>
-            <Route exact path={["/", "/books"]}>
-              <Books />
+            <Route exact path={["/", "/ideas"]}>
+              <Ideas />
             </Route>
-            <Route exact path="/books/:bookid">
+            <Route exact path="/ideas/:ideaid">
               <Detail />
             </Route>
             <Route exact path="/login">
