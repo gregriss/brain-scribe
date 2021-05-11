@@ -59,7 +59,7 @@ function Ideas() {
       <Row>
         <Col size="md-6">
           <Jumbotron>
-            <h1>What Ideas Should I Review?</h1>
+            <h1>Add a new Idea</h1>
           </Jumbotron>
           <form>
             <Input
@@ -87,7 +87,7 @@ function Ideas() {
         </Col>
         <Col size="md-6 sm-12">
           <Jumbotron>
-            <h1>Ideas in my Collection</h1>
+            <h1>My Ideas</h1>
           </Jumbotron>
           {ideas.length ? (
             <List>
