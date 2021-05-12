@@ -13,6 +13,8 @@ const passport = require("./config/passport");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// dotenv package
+require('dotenv').config()
 // We need to use sessions to keep track of our user's login status
 app.use(
   session({ secret: "the secret that always changes", resave: true, saveUninitialized: true })

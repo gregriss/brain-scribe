@@ -1,3 +1,6 @@
+# Private google API credentials
+myprivatekey.json
+
 # Logs
 logs
 *.log
