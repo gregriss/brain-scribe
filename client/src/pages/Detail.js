@@ -8,7 +8,7 @@ function Detail(props) {
   const [idea, setIdea] = useState({})
 
   // When this component mounts, grab the idea with the _id of props.match.params.id
-  // e.g. localhost:3000/ideas/599dcb67f0f16317844583fc
+  // e.g. localhost:3000/books/599dcb67f0f16317844583fc
   const { ideaid } = useParams() // think useContext
   useEffect(() => {
     API.getIdea(ideaid)
@@ -30,7 +30,7 @@ function Detail(props) {
       <Row>
         <Col size="md-10 md-offset-1">
           <article>
-            <h1>Idea Content</h1>
+            <h1>Content</h1>
             <p>
               {idea.content}
             </p>
@@ -39,7 +39,7 @@ function Detail(props) {
       </Row>
       <Row>
         <Col size="md-2">
-          <Link to="/">← Back to Authors</Link>
+          <Link to="/">← Back to Ideas</Link>
         </Col>
       </Row>
     </Container>

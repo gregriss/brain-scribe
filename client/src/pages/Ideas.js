@@ -12,13 +12,12 @@ function Ideas() {
   const [ideas, setIdeas] = useState([])
   const [formObject, setFormObject] = useState({})
 
-  // Load all ideas and store them with setIdeas
+  // Load all books and store them with setBooks
   useEffect(() => {
     loadIdeas()
-    // getTranscription()
   }, [])
 
-  // Loads all ideas and sets them to ideas
+  // Loads all books and sets them to books
   function loadIdeas() {
     API.getIdeas()
       .then(res =>
@@ -27,15 +26,7 @@ function Ideas() {
       .catch(err => console.log(err));
   };
 
-  // function getTranscription() {
-  //   Speech.getTranscript()
-  //     .then(response =>
-  //       console.log("Transcription" + response)
-  //     )
-  //     .catch(err => console.log(err))
-  // };
-
-  // Deletes an idea from the database with a given id, then reloads ideas from the db
+  // Deletes a book from the database with a given id, then reloads books from the db
   function deleteIdea(id) {
     API.deleteIdea(id)
       .then(res => loadIdeas())
@@ -48,8 +39,8 @@ function Ideas() {
     setFormObject({ ...formObject, [name]: value })
   };
 
-  // When the form is submitted, use the API.saveIdea method to save the idea data
-  // Then reload ideas from the database
+  // When the form is submitted, use the API.saveBook method to save the book data
+  // Then reload books from the database
   function handleFormSubmit(event) {
     event.preventDefault();
     if (formObject.title && formObject.author) {
@@ -68,7 +59,7 @@ function Ideas() {
       <Row>
         <Col size="md-6">
           <Jumbotron>
-            <h1>Add a new Idea</h1>
+            <h1>Add a New Idea</h1>
           </Jumbotron>
           <form>
             <Input

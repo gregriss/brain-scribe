@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 const db = require("../models");
 
-// Reworked seed file that empties Ideas collection and inserts ideas below
-// renamed database
+// This file empties the Ideas collection and inserts the books below
+
 mongoose.connect(
   process.env.MONGODB_URI ||
   "mongodb://localhost/brainscribe"

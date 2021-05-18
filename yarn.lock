@@ -41,9 +41,9 @@
     uuid "^8.3.2"
 
 "@grpc/grpc-js@~1.3.0":
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/@grpc/grpc-js/-/grpc-js-1.3.1.tgz#8b57430b72b77ce5eb1925c2c9951b7e68eb1971"
-  integrity sha512-zyFq9eW0U4vGyhJS/oeW3mIeKTzB13we9rBclcisfRHxGQbC9FCOKQ5BBA2129yZwRVMt4hQia1igGzECeuY9g==
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/@grpc/grpc-js/-/grpc-js-1.3.2.tgz#eae97e6daf5abd49a7818aadeca0744dfb1ebca1"
+  integrity sha512-UXepkOKCATJrhHGsxt+CGfpZy9zUn1q9mop5kfcXq1fBkTePxVNPOdnISlCbJFlCtld+pSLGyZCzr9/zVprFKA==
   dependencies:
     "@types/node" ">=12.12.47"
 
@@ -129,9 +129,9 @@
   integrity sha512-5tXH6Bx/kNGd3MgffdmP4dy2Z+G4eaXw0SE81Tq3BNadtnMR5/ySMzX4SLEzHJzSmPNn4HIdpQsBvXMUykr58w==
 
 "@types/node@*", "@types/node@>=12.12.47", "@types/node@>=13.7.0":
-  version "15.0.2"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-15.0.2.tgz#51e9c0920d1b45936ea04341aa3e2e58d339fb67"
-  integrity sha512-p68+a+KoxpoB47015IeYZYRrdqMUcpbK8re/zpFB8Ld46LHC1lPEbp3EXgkEhAYEcPvjJF6ZO+869SQ0aH1dcA==
+  version "15.3.0"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-15.3.0.tgz#d6fed7d6bc6854306da3dea1af9f874b00783e26"
+  integrity sha512-8/bnjSZD86ZfpBsDlCIkNXIvm+h6wi9g7IqL+kmFkQ+Wvu3JrasgLElfiPgoo8V8vVfnEi0QVS12gbl94h9YsQ==
 
 "@types/pumpify@^1.4.1":
   version "1.4.1"
@@ -1135,9 +1135,9 @@ google-auth-library@^7.0.2:
     lru-cache "^6.0.0"
 
 google-gax@^2.9.2:
-  version "2.12.0"
-  resolved "https://registry.yarnpkg.com/google-gax/-/google-gax-2.12.0.tgz#caf04b72d81ca8a3c34c72d7f4e9866ad38dd775"
-  integrity sha512-UDx4ZZx85vXBe6GZ0sdRSzuegLrRQdRjCxlauX+U7i5YwOoSgcSaIM71BhcdHwGPhEkvO/SSHrEfc1wpL/J6JA==
+  version "2.13.0"
+  resolved "https://registry.yarnpkg.com/google-gax/-/google-gax-2.13.0.tgz#404bb9df62c3a0a414e2f5339eda4d751f540304"
+  integrity sha512-aKNJy2+Vv2I7flyNYbwpq0aYBHp6Qv32HZn+wr6ZhZ8xlSCLS9K9k7izfh2nd1rCJQcsqB6KMxHV0Vwny6Rc1g==
   dependencies:
     "@grpc/grpc-js" "~1.3.0"
     "@grpc/proto-loader" "^0.6.1"
@@ -2269,11 +2269,6 @@ rc@^1.0.1, rc@^1.1.6:
     ini "~1.3.0"
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
-
-react-speech-recognition@^3.8.0:
-  version "3.8.0"
-  resolved "https://registry.yarnpkg.com/react-speech-recognition/-/react-speech-recognition-3.8.0.tgz#0b40b6880e46b3aa6244051e8e989c4640eaaa58"
-  integrity sha512-mQ5oVQPt2l95/YKuaB+vGdDCuOKJS/ezwALWgo0w1+/CT3N2jxAdkOzeqvJiBmCLf263sCbkJ/L4fI8R1ij2IA==
 
 read-pkg@^4.0.1:
   version "4.0.1"

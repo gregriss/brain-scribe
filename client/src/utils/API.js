@@ -1,19 +1,19 @@
 import axios from "axios";
 
 export default {
-  // Gets all ideas
+  // Gets all books
   getIdeas: function () {
     return axios.get("/api/ideas");
   },
-  // Gets the idea with the given id
+  // Gets the book with the given id
   getIdea: function (id) {
     return axios.get("/api/ideas/" + id);
   },
-  // Deletes the idea with the given id
+  // Deletes the book with the given id
   deleteIdea: function (id) {
     return axios.delete("/api/ideas/" + id);
   },
-  // Saves a idea to the database
+  // Saves a book to the database
   saveIdea: function (ideaData) {
     return axios.post("/api/ideas", ideaData);
   },

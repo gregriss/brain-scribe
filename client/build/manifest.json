@@ -1,10 +1,10 @@
 {
-  "short_name": "BrainScribe",
-  "name": "BrainScribe Speech to Text App",
+  "short_name": "React App",
+  "name": "Create React App Sample",
   "icons": [
     {
-      "src": "mic-icon.svg",
-      "sizes": "16x16",
+      "src": "favicon.ico",
+      "sizes": "64x64",
       "type": "image/png"
     }
   ],
