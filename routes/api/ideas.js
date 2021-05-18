@@ -54,14 +54,14 @@ router.get('/test', (req, res) => {
 
     const transcription = response.results.map(result =>
       result.alternatives[0].transcript).join('\n');
-    console.log(`Transcription: ${transcription}`);
+    // console.log(`Transcription: ${transcription}`);
     // return transcription;
-    // return res.json(transcription);
+    res.json(transcription);
     // // }
     // getSpeech().catch(console.error);
-    res.json(response);
-    console.log(response)
+    // res.json(response);
   }
+  getSpeech();
 });
 
 module.exports = router;
