@@ -15,6 +15,7 @@ function Ideas() {
   // Load all ideas and store them with setIdeas
   useEffect(() => {
     loadIdeas()
+    // getTranscription()
   }, [])
 
   // Loads all ideas and sets them to ideas
@@ -25,6 +26,14 @@ function Ideas() {
       )
       .catch(err => console.log(err));
   };
+
+  // function getTranscription() {
+  //   Speech.getTranscript()
+  //     .then(response =>
+  //       console.log("Transcription" + response)
+  //     )
+  //     .catch(err => console.log(err))
+  // };
 
   // Deletes an idea from the database with a given id, then reloads ideas from the db
   function deleteIdea(id) {
