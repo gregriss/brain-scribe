@@ -1,5 +1,6 @@
 const express = require("express");
 
+const fileUpload = require("express-fileupload");
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
@@ -12,6 +13,9 @@ const passport = require("./config/passport");
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+// File upload package
+app.use(fileUpload());
 
 // dotenv package
 // require('dotenv').config();
