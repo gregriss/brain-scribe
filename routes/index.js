@@ -9,7 +9,7 @@ router.use("/api", apiRoutes);
 // Upload route
 router.use("/uploads", uploadRoutes);
 
-// If no API or upload routes are hit, send the React app
+// If no API or Upload routes are hit, send the React app
 router.use(function (req, res) {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });

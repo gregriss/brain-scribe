@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import DeleteBtn from "../components/DeleteBtn";
 import Jumbotron from "../components/Jumbotron";
 import DragandDrop from "../components/DragandDrop";
+import FileUpload from "../components/FileUpload";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
@@ -92,7 +93,9 @@ function Ideas() {
           <Jumbotron>
             <h1>Add a New Idea</h1>
           </Jumbotron>
-          <DragandDrop data={data} dispatch={dispatch} />
+          <FileUpload />
+          <DragandDrop data={data} dispatch={dispatch}>
+          </DragandDrop>
           <form>
             <Input
               id="title"
