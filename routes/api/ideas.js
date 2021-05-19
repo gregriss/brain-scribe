@@ -1,34 +1,22 @@
 const router = require("express").Router();
 const ideasController = require("../../controllers/ideasController");
 
+require('dotenv').config();
 const speech = require('@google-cloud/speech');
 const fs = require('fs');
-require('dotenv').config();
+const path = require('path');
 
 // Matches with "/api/ideas"
 router.route("/")
   .get(ideasController.findAll)
   .post(ideasController.create);
 
-// Matches with "/api/ideas/:id"
-router
-  .route("/:id")
-  .get(ideasController.findById)
-  .put(ideasController.update)
-  .delete(ideasController.remove);
-
-router.get('/test', (req, res) => {
-  //   // let testData = { test: 'testing route' };
-  //   // req.body = testData;
-  //   // res.json(testData);
-  //   // console.log('test route hit');
-  //   res.json(req.body)
-  //     .catch(err => res.status(422).json(err));
-
-  // res.status(200).send('ok');
+router.get('/testing', (req, res) => {
+  // res.json(false);
   async function getSpeech() {
     const client = new speech.SpeechClient();
-    const filename = '../../resources/benner-st.flac';
+    // console.log(__dirname);
+    const filename = path.join(__dirname, '../../resources/bennerst.flac');
 
     const file = fs.readFileSync(filename);
     const audioBytes = file.toString('base64');
@@ -55,13 +43,19 @@ router.get('/test', (req, res) => {
     const transcription = response.results.map(result =>
       result.alternatives[0].transcript).join('\n');
     // console.log(`Transcription: ${transcription}`);
-    // return transcription;
-    res.json(transcription);
-    // // }
-    // getSpeech().catch(console.error);
-    // res.json(response);
+    // res.json(transcription);
+    // res.send(console.log(`Transcription: ${transcription}`));
+
+    res.json(JSON.stringify(transcription));
   }
-  getSpeech();
+  getSpeech().catch(console.error);
 });
+
+// Matches with "/api/ideas/:id"
+router
+  .route("/:id")
+  .get(ideasController.findById)
+  .put(ideasController.update)
+  .delete(ideasController.remove);
 
 module.exports = router;

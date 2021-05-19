@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import DeleteBtn from "../components/DeleteBtn";
 import Jumbotron from "../components/Jumbotron";
+import DragandDrop from "../components/DragandDrop";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
@@ -68,6 +69,22 @@ function Ideas() {
   // })
   // }
 
+  const reducer = (state, action) => {
+    switch (action.type) {
+      case 'SET_DROP_DEPTH':
+        return { ...state, dropDepth: action.dropDepth }
+      case 'SET_IN_DROP_ZONE':
+        return { ...state, inDropZone: action.inDropZone };
+      case 'ADD_FILE_TO_LIST':
+        return { ...state, fileList: state.fileList.concat(action.files) };
+      default:
+        return state;
+    }
+  };
+  const [data, dispatch] = React.useReducer(
+    reducer, { dropDepth: 0, inDropZone: false, fileList: [] }
+  )
+
   return (
     <Container fluid>
       <Row>
@@ -75,6 +92,7 @@ function Ideas() {
           <Jumbotron>
             <h1>Add a New Idea</h1>
           </Jumbotron>
+          <DragandDrop data={data} dispatch={dispatch} />
           <form>
             <Input
               id="title"
@@ -110,18 +128,31 @@ function Ideas() {
             <h1>My Ideas</h1>
           </Jumbotron>
           {ideas.length ? (
-            <List>
-              {ideas.map(idea => (
-                <ListItem key={idea._id}>
-                  <Link to={"/ideas/" + idea._id}>
-                    <strong>
-                      {idea.title} by {idea.author}
-                    </strong>
-                  </Link>
-                  <DeleteBtn onClick={() => deleteIdea(idea._id)} />
-                </ListItem>
-              ))}
-            </List>
+            <>
+              <List>
+                {ideas.map(idea => (
+                  <ListItem key={idea._id}>
+                    <Link to={"/ideas/" + idea._id}>
+                      <strong>
+                        {idea.title} by {idea.author}
+                      </strong>
+                    </Link>
+                    <DeleteBtn onClick={() => deleteIdea(idea._id)} />
+                  </ListItem>
+                ))}
+              </List>
+              <ol className="dropped-files" style={{ marginTop: '20px', minHeight: '20px', border: '1px solid black' }}>
+                {data.fileList.map(f => {
+                  return (
+                    <li
+                      style={{ color: 'hsl(239, 75%, 50%)', padding: '3px', textAlign: 'left', fontWeight: 'bold' }}
+                      key={f.name}>
+                      {f.name}
+                    </li>
+                  )
+                })}
+              </ol>
+            </>
           ) : (
             <h3>No Results to Display</h3>
           )}

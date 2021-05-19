@@ -1,6 +1,7 @@
 .delete-btn {
   float: right;
   color: hsl(2, 85%, 39%);
-  font-size: large;
+  font-family: 'Arial';
+  /* font-size: large; */
   font-weight: bolder;
 }
