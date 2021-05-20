@@ -144,8 +144,14 @@ function Ideas() {
                   </ListItem>
                 ))}
               </List>
-              <ol className="dropped-files" style={{ marginTop: '20px', minHeight: '20px', border: '1px solid black' }}>
-                {data.fileList.map(f => {
+              <Jumbotron>
+                <h2>Uploaded Ideas</h2>
+              </Jumbotron>
+              <ol className="dropped-files" style={{ marginTop: '20px', minHeight: '20px', border: '1px solid #DDD', borderRadius: '4px' }}>
+                {data.fileList.map(f => { // curly braces will be () if mapping like ListItem above
+                  // <ListItem key={f.name}>
+                  //   {f.name}
+                  // </ListItem>
                   return (
                     <li
                       style={{ color: 'hsl(239, 75%, 50%)', padding: '3px', textAlign: 'left', fontWeight: 'bold' }}
