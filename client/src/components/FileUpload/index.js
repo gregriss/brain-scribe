@@ -52,7 +52,7 @@ const FileUpload = () => {
                 <input
                     type="submit"
                     value="Upload"
-                    className="btn btn-success btn-block mt-4"
+                    className="btn btn-success btn-block mt-2"
                 />
             </form>
             { uploadedFile ? (

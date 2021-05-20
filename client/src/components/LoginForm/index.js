@@ -21,7 +21,7 @@ function LoginForm(props) {
         event.preventDefault();
         // console.log("submit happened");
         // console.log({ email: emailInput.current.value, password: passwordInput.current.value});
-        API.login({ email: emailInput.current.value, password: passwordInput.current.value})
+        API.login({ email: emailInput.current.value, password: passwordInput.current.value })
             .then(data => {
                 // console.log(data);
                 setEmail(data.data.email);
@@ -46,7 +46,7 @@ function LoginForm(props) {
                             <label htmlFor={passwordId}>Password</label>
                             <input ref={passwordInput} type="password" className="form-control" id={passwordId} />
                         </div>
-                        <button type="submit" className="btn btn-primary">Login</button>
+                        <button type="submit" className="btn btn-success">Login</button>
                     </form>
                     );
                 }

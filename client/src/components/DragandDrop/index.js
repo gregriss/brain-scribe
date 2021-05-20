@@ -1,6 +1,9 @@
 import React from 'react';
 import './style.css';
 
+// TODO call a function to upload the file inside  handleDrop 
+// Refactor this component code to look more like FileUpload
+// Maybe I should Turn the 'Add a New Idea' jumbotron into the Drag and Drop Zone
 const DragAndDrop = props => {
     const { data, dispatch } = props;
 
@@ -48,7 +51,7 @@ const DragAndDrop = props => {
             onDragEnter={e => handleDragEnter(e)}
             onDragLeave={e => handleDragLeave(e)}
         >
-            <h3>Drag files here to upload</h3>
+            <h3>Or Drag File Here to Upload</h3>
         </div>
     );
 };

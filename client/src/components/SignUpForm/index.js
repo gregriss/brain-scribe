@@ -26,7 +26,7 @@ function SignUpForm(props) {
         // .catch(err => {
         //     console.log(err);
         // });
-        API.signup({ email: emailInput.current.value, password: passwordInput.current.value})
+        API.signup({ email: emailInput.current.value, password: passwordInput.current.value })
             .then(data => {
                 // console.log(data);
                 setEmail(data.data.email);
@@ -50,7 +50,7 @@ function SignUpForm(props) {
                             <label htmlFor={passwordId}>Password</label>
                             <input ref={passwordInput} type="password" className="form-control" id={passwordId} />
                         </div>
-                        <button type="submit" className="btn btn-primary">Sign Up</button>
+                        <button type="submit" className="btn btn-success">Sign Up</button>
                     </form>
                     );
                 }

@@ -7,6 +7,22 @@
 }
 
 .navbar-brand {
+    // color: #eee !important;
+    color: hsl(239, 75%, 40%) !important;
     text-transform: none;
-    font-size: 130%;
+    font-size: 150%;
+}
+
+#icon {
+    margin-left: 3px;
+}
+
+#login-expand-btn {
+    border: none;
+}
+#hide-login-x {
+    cursor: pointer;
+    border: none !important;
+    color: rgb(202, 26, 26);
+    margin: 5px;
 }
