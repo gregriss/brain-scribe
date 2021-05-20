@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Ideas from "./pages/Ideas";
 import Detail from "./pages/Detail";
-// import SpeechRec from "./components/SpeechRec";
+import SpeechRec from "./pages/SpeechRec";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
 import Login from "./pages/Login";
@@ -19,9 +19,9 @@ function App() {
         <div>
           <Nav />
           <Switch>
-            {/* <Route exact path={["/speech"]}>
+            <Route exact path={["/speech"]}>
               <SpeechRec />
-            </Route> */}
+            </Route>
             <Route exact path={["/", "/ideas"]}>
               <Ideas />
             </Route>

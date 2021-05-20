@@ -94,6 +94,11 @@ function Ideas() {
         <Col size="md-6">
           <Jumbotron>
             <h1>Add a New Idea</h1>
+            <Link to="/speech">
+              <h4 style={{ color: 'green' }}>
+                - Or Use Speech to Text -
+              </h4>
+            </Link>
           </Jumbotron>
           <FileUpload />
           <DragandDrop data={data} dispatch={dispatch}>
