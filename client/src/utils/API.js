@@ -1,19 +1,19 @@
 import axios from "axios";
 
 export default {
-  // Gets all books
+  // Gets all ideas
   getIdeas: function () {
     return axios.get("/api/ideas");
   },
-  // Gets the book with the given id
+  // Gets the idea with the given id
   getIdea: function (id) {
     return axios.get("/api/ideas/" + id);
   },
-  // Deletes the book with the given id
+  // Deletes the idea with the given id
   deleteIdea: function (id) {
     return axios.delete("/api/ideas/" + id);
   },
-  // Saves a book to the database
+  // Saves idea to the database
   saveIdea: function (ideaData) {
     return axios.post("/api/ideas", ideaData);
   },
@@ -31,5 +31,8 @@ export default {
   },
   getUser: function () {
     return axios.get("/api/user/data");
+  },
+  saveAudio: function (filename) {
+    return axios.get("/api/ideas/text", filename);
   }
 };

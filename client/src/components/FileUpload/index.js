@@ -1,5 +1,4 @@
 import React, { Fragment, useState } from 'react';
-
 import axios from 'axios';
 
 const FileUpload = () => {
@@ -23,18 +22,19 @@ const FileUpload = () => {
                     'Content-Type': 'multi-part/form-data'
                 }
             });
-
+            console.log(res);
             const { fileName, filePath } = res.data;
 
             setUploadedFile({ fileName, filePath });
+            console.log(this.state.fileName);
         } catch (err) {
-            if (err.response.status === 500) {
-                console.log('There was a problem with the server');
-            } else {
-                console.log(err.response.data.msg);
-            }
+            console.error(err);
+            // if (err.response.status === 500) {
+            //     console.log('There was a problem with the server');
+            // } else {
+            //     console.log(err.response.data.msg);
+            // }
         }
-
     }
 
     return (
@@ -56,8 +56,8 @@ const FileUpload = () => {
                 />
             </form>
             { uploadedFile ? (
-                <div className="row mt-5">
-                    <div className="col-md-3">
+                <div className="row mt-2">
+                    <div className="col-md-8 m-auto">
                         <h4 className="text-center">{uploadedFile.filename}</h4>
                         <img style={{ width: '100%' }} src={uploadedFile.filePath} alt="" />
                     </div>
