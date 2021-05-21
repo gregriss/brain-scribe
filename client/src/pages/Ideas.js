@@ -95,7 +95,7 @@ function Ideas() {
           <Jumbotron>
             <h1>Add a New Idea</h1>
             <Link to="/speech">
-              <h4 style={{ color: 'green' }}>
+              <h4 className="text-success">
                 - Or Use Speech to Text -
               </h4>
             </Link>

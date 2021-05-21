@@ -5,7 +5,17 @@
     {
       "src": "mic-icon.svg",
       "sizes": "144x144",
-      "type": "image/png"
+      "type": "image/svg"
+    },
+    {
+      "src": "reset-icon.svg",
+      "sizes": "144x144",
+      "type": "image/svg"
+    },
+    {
+      "src": "stop-icon.svg",
+      "sizes": "144x144",
+      "type": "image/svg"
     }
   ],
   "start_url": "./index.html",

@@ -10,6 +10,18 @@ import API from "../utils/API";
 import { Container, Row, Col } from "../components/Grid";
 import { Input, TextArea, FormBtn } from "../components/Form";
 
+const styles = {
+    button: {
+        background: 'hsl(239, 75%, 70%)',
+        height: '60px',
+        width: '60px',
+        border: '1px solid #DDD',
+        margin: '6px 2px',
+        padding: '0',
+        alignContent: 'center'
+    }
+}
+
 const SpeechRec = () => {
     const [message, setMessage] = useState('');
     const [formObject, setFormObject] = useState({})
@@ -98,9 +110,9 @@ const SpeechRec = () => {
                             </h2>
                         </div>
                         <div>
-                            <button type="button" onClick={resetTranscript}>Reset</button>
-                            <button type="button" onClick={listenContinuously}>Listen</button>
-                            <button type="button" onClick={SpeechRecognition.stopListening}>Stop</button>
+                            <button className="btn btn-lg speech-btn" style={styles.button} type="button" onClick={resetTranscript}><img src={'/reset-icon.svg'} alt='reset' /></button>
+                            <button className="btn btn-lg speech-btn" style={styles.button} type="button" onClick={SpeechRecognition.stopListening}><img src={'/stop-icon.svg'} alt='stop' /></button>
+                            <button className="btn btn-lg speech-btn" style={styles.button} type="button" onClick={listenContinuously}><img src={'/mic-icon.svg'} alt='record' /></button>
                         </div>
                         <Input
                             id="title"
@@ -123,11 +135,11 @@ const SpeechRec = () => {
                         <h4>BrainScribe Says:</h4>
                         <div
                             value={message}
-                            style={{ border: '1px solid #DDD', minHeight: '75px' }}
+                            style={{ border: '1px solid #DDD', borderRadius: '4px', minHeight: '75px', marginBottom: '6px' }}
                         >
                         </div>
                         <FormBtn
-                            // disabled={!(formObject.author && formObject.title)}
+                            disabled={!(formObject.author && formObject.title)}
                             onClick={handleFormSubmit}
                         >
                             Save Idea
