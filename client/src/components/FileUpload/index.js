@@ -26,7 +26,7 @@ const FileUpload = () => {
             const { fileName, filePath } = res.data;
 
             setUploadedFile({ fileName, filePath });
-            console.log(this.state.fileName);
+            console.log(fileName);
         } catch (err) {
             console.error(err);
             // if (err.response.status === 500) {
