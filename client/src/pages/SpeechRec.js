@@ -1,12 +1,7 @@
-// import React from "react";
-// import PropTypes from "prop-types";
-// import SpeechRecognition from "react-speech-recognition";
-// // import { List, ListItem } from "../components/List";
-
 import React, { useEffect, useState } from 'react';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import API from "../utils/API";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Container, Row, Col } from "../components/Grid";
 import { Input, TextArea, FormBtn } from "../components/Form";
 
@@ -72,7 +67,7 @@ const SpeechRec = () => {
     const listenContinuously = () => {
         SpeechRecognition.startListening({
             continuous: true,
-            // language: 'en-US',
+            language: 'en-US',
         });
     };
 
@@ -80,6 +75,7 @@ const SpeechRec = () => {
     function handleInputChange(event) {
         const { name, value } = event.target;
         setFormObject({ ...formObject, [name]: value })
+        // console.log(value);
     };
 
     // When the form is submitted, use the API.saveIdea method to save the idea data
@@ -90,7 +86,7 @@ const SpeechRec = () => {
             API.saveIdea({
                 title: formObject.title,
                 author: formObject.author,
-                content: formObject.content
+                content: transcript
             })
                 .then(res => resetTranscript())
                 .catch(err => console.log(err));
@@ -104,7 +100,7 @@ const SpeechRec = () => {
                     <form>
                         <div>
                             <h2>
-                                Listening:
+                                Listening for Speech:
                             {' '}
                                 {listening ? 'on' : 'off'}
                             </h2>
@@ -113,22 +109,26 @@ const SpeechRec = () => {
                             <button className="btn btn-lg speech-btn" style={styles.button} type="button" onClick={resetTranscript}><img src={'/reset-icon.svg'} alt='reset' /></button>
                             <button className="btn btn-lg speech-btn" style={styles.button} type="button" onClick={SpeechRecognition.stopListening}><img src={'/stop-icon.svg'} alt='stop' /></button>
                             <button className="btn btn-lg speech-btn" style={styles.button} type="button" onClick={listenContinuously}><img src={'/mic-icon.svg'} alt='record' /></button>
+                            <Link to="/" style={{ color: "hsl(239, 75%, 40%)", float: "right", top: "5px" }}>← Back to Homepage</Link>
                         </div>
                         <Input
                             id="title"
-                            // onReset={handleFormReset}
-                            onChange={handleInputChange}
                             name="title"
                             placeholder="Title (required)"
+                            // onReset={handleFormReset}
+                            onChange={handleInputChange}
                         />
                         <Input
                             id="author"
-                            // onReset={handleFormReset}
-                            onChange={handleInputChange}
                             name="author"
                             placeholder="Author (required)"
+                            // onReset={handleFormReset}
+                            onChange={handleInputChange}
                         />
                         <TextArea
+                            id="content"
+                            name="content"
+                            // onChange={handleInputChange}
                             defaultValue={transcript}
                         >
                         </TextArea>

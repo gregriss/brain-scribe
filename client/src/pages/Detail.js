@@ -39,7 +39,9 @@ function Detail(props) {
       </Row>
       <Row>
         <Col size="md-2">
-          <Link to="/">← Back to Ideas</Link>
+          <Link
+            to="/"
+            style={{ color: "hsl(239, 75%, 40%)" }}>← Back to Ideas</Link>
         </Col>
       </Row>
     </Container>

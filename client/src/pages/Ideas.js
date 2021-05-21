@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 // import SpeechRecognition from "react-speech-recognition";
 import DeleteBtn from "../components/DeleteBtn";
 import Jumbotron from "../components/Jumbotron";
-import DragandDrop from "../components/DragandDrop";
+// import DragandDrop from "../components/DragandDrop";
 import FileUpload from "../components/FileUpload";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
@@ -72,21 +72,21 @@ function Ideas() {
   // })
   // }
 
-  const reducer = (state, action) => {
-    switch (action.type) {
-      case 'SET_DROP_DEPTH':
-        return { ...state, dropDepth: action.dropDepth }
-      case 'SET_IN_DROP_ZONE':
-        return { ...state, inDropZone: action.inDropZone };
-      case 'ADD_FILE_TO_LIST':
-        return { ...state, fileList: state.fileList.concat(action.files) };
-      default:
-        return state;
-    }
-  };
-  const [data, dispatch] = React.useReducer(
-    reducer, { dropDepth: 0, inDropZone: false, fileList: [] }
-  )
+  // const reducer = (state, action) => {
+  //   switch (action.type) {
+  //     case 'SET_DROP_DEPTH':
+  //       return { ...state, dropDepth: action.dropDepth }
+  //     case 'SET_IN_DROP_ZONE':
+  //       return { ...state, inDropZone: action.inDropZone };
+  //     case 'ADD_FILE_TO_LIST':
+  //       return { ...state, fileList: state.fileList.concat(action.files) };
+  //     default:
+  //       return state;
+  //   }
+  // };
+  // const [data, dispatch] = React.useReducer(
+  //   reducer, { dropDepth: 0, inDropZone: false, fileList: [] }
+  // )
 
   return (
     <Container fluid>
@@ -104,8 +104,8 @@ function Ideas() {
             </Link>
           </Jumbotron>
           <FileUpload />
-          <DragandDrop data={data} dispatch={dispatch}>
-          </DragandDrop>
+          {/* <DragandDrop data={data} dispatch={dispatch}>
+          </DragandDrop> */}
           <form>
             <Input
               id="title"
@@ -154,7 +154,7 @@ function Ideas() {
                   </ListItem>
                 ))}
               </List>
-              <Jumbotron>
+              {/* <Jumbotron>
                 <h2>Uploaded Ideas</h2>
               </Jumbotron>
               <ol className="dropped-files" style={{ marginTop: '20px', minHeight: '20px', border: '1px solid #DDD', borderRadius: '4px' }}>
@@ -170,7 +170,7 @@ function Ideas() {
                     </li>
                   )
                 })}
-              </ol>
+              </ol> */}
             </>
           ) : (
             <h3>No Results to Display</h3>
