@@ -21,7 +21,6 @@ router.post('/', (req, res) => {
     const ext = file.name.split('.').pop();
 
     // file.mv(`${__dirname}/resources/${file.name}`, err => {
-    // file.mv(`${__dirname}/client/public/uploads/${file.name}`, err => {
     file.mv(filepath, async err => {
         if (err) {
             console.error(err);
@@ -39,7 +38,6 @@ router.post('/', (req, res) => {
             .then(data => data).catch(err => console.error(err));
         console.log(results);
         res.json(results);
-
         // res.json({ fileName: file.name, filePath: `/resources/${file.name}` });
     });
     // console.log(file);
