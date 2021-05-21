@@ -94,7 +94,10 @@ function Ideas() {
         <Col size="md-6">
           <Jumbotron>
             <h1>Add a New Idea</h1>
-            <Link to="/speech">
+            <Link
+              to="/speech"
+              style={{ textDecorationColor: 'hsl(239, 75%, 40%)' }}
+            >
               <h4 className="text-success">
                 - Or Use Speech to Text -
               </h4>
