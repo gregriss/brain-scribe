@@ -99,7 +99,7 @@ function Ideas() {
               style={{ textDecorationColor: 'hsl(239, 75%, 40%)' }}
             >
               <h4 className="text-success">
-                - Or Use Speech to Text -
+                Or Use Speech to Text &#10132;
               </h4>
             </Link>
           </Jumbotron>
@@ -173,7 +173,7 @@ function Ideas() {
               </ol> */}
             </>
           ) : (
-            <h3>No Results to Display</h3>
+            <h3>No Results to Display &#9785;</h3>
           )}
         </Col>
       </Row>

@@ -52,6 +52,7 @@ const FileUpload = () => {
                 <input
                     type="submit"
                     value="Upload"
+                    disabled={!uploadedFile.filename}
                     className="btn btn-success btn-block mt-2"
                 />
             </form>

@@ -7,7 +7,7 @@ function DeleteBtn(props) {
   return (
     <span className="delete-btn" {...props} role="button" tabIndex="0">
       {/* ✗ */}
-      X
+      &#10006;
     </span>
   );
 }
