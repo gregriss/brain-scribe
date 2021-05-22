@@ -22,13 +22,13 @@ function Nav() {
         }
         else {
           if (!loginExpanded) {
-            return <button id="login-expand-btn" className="btn" onClick={() => setLoginExpanded(true)}>Login</button>;
+            return <button id="login-expand-btn" className="btn btn-secondary" role="button" onClick={() => setLoginExpanded(true)}>Login</button>;
           }
           else {
             return (
               <Fragment>
                 <LoginForm className="top-menu-login" />
-                <button id="hide-login-x" onClick={() => setLoginExpanded(false)}>X</button>
+                <button id="hide-login-x" onClick={() => setLoginExpanded(false)}>&#10006;</button>
               </Fragment>
             )
           }

@@ -29,8 +29,8 @@ function Detail(props) {
       </Row>
       <Row>
         <Col size="md-10 md-offset-1">
-          <article>
-            <h1>Content</h1>
+          <article style={{ margin: '15px' }}>
+            <h2>Content</h2>
             <p>
               {idea.content}
             </p>
@@ -41,7 +41,7 @@ function Detail(props) {
         <Col size="md-2">
           <Link
             to="/"
-            style={{ color: "hsl(239, 75%, 40%)" }}>← Back to Ideas</Link>
+            style={{ color: "hsl(239, 75%, 40%)", margin: '15px' }}>← Back to Ideas</Link>
         </Col>
       </Row>
     </Container>

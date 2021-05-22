@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const FileUpload = () => {
     const [file, setFile] = useState('');
-    const [filename, setFilename] = useState('Choose File');
+    const [filename, setFilename] = useState('Choose mp3, wav, or flac file');
     const [uploadedFile, setUploadedFile] = useState({});
 
     const onChange = e => {
@@ -51,9 +51,9 @@ const FileUpload = () => {
                 </div>
                 <input
                     type="submit"
-                    value="Upload"
+                    value="Upload Audio &#8673;"
                     disabled={!uploadedFile.filename}
-                    className="btn btn-success btn-block mt-2"
+                    className="btn btn-lg btn-success btn-block mt-2"
                 />
             </form>
             { uploadedFile ? (
