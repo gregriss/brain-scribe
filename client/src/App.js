@@ -19,20 +19,20 @@ function App() {
         <div>
           <Nav />
           <Switch>
-            <Route exact path={["/speech"]}>
-              <SpeechRec />
+            <Route exact path={["/", "/login"]}>
+              <Login />
             </Route>
-            <Route exact path={["/", "/ideas"]}>
+            <Route exact path={["/signup"]}>
+              <SignUp />
+            </Route>
+            <Route exact path={["/ideas"]}>
               <Ideas />
             </Route>
             <Route exact path="/ideas/:ideaid">
               <Detail />
             </Route>
-            <Route exact path="/login">
-              <Login />
-            </Route>
-            <Route exact path="/signup">
-              <SignUp />
+            <Route exact path={["/speech"]}>
+              <SpeechRec />
             </Route>
             <Route exact path="/logout">
               <Logout />

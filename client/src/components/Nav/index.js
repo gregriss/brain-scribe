@@ -9,7 +9,7 @@ function Nav() {
   const { email, loggedIn } = useContext(UserContext);
   return (
     <nav className="navbar navbar-expand-lg navbar-light" style={{ borderBottom: '2px solid #ccc', boxShadow: 'inset 0 0 5px #BBB' }}>
-      <a className="navbar-brand" href="/">
+      <a className="navbar-brand" href="/ideas">
         BrainScribe
         <svg id="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-mic-fill" viewBox="0 0 16 16">
           <path d="M5 3a3 3 0 0 1 6 0v5a3 3 0 0 1-6 0V3z" />
@@ -18,11 +18,11 @@ function Nav() {
       </a>
       { (() => {
         if (loggedIn) {
-          return <p className="logged-in-text">Logged in as {email} <Link to="/logout" onClick={() => setLoginExpanded(false)}>Logout</Link> </p>;
+          return <p className="logged-in-text">Logged in as {email} <Link to="/logout" className="text-danger" onClick={() => setLoginExpanded(false)}>Logout</Link> </p>;
         }
         else {
           if (!loginExpanded) {
-            return <button id="login-expand-btn" className="btn btn-secondary" role="button" onClick={() => setLoginExpanded(true)}>Login</button>;
+            return <button id="login-expand-btn" className="btn btn-secondary" onClick={() => setLoginExpanded(true)}>Login</button>;
           }
           else {
             return (

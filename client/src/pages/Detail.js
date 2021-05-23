@@ -40,7 +40,7 @@ function Detail(props) {
       <Row>
         <Col size="md-2">
           <Link
-            to="/"
+            to="/ideas"
             style={{ color: "hsl(239, 75%, 40%)", margin: '15px' }}>← Back to Ideas</Link>
         </Col>
       </Row>

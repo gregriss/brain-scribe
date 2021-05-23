@@ -109,7 +109,7 @@ const SpeechRec = () => {
                             <button className="btn btn-lg speech-btn" style={styles.button} type="button" onClick={resetTranscript}><img src={'/reset-icon.svg'} alt='reset' /></button>
                             <button className="btn btn-lg speech-btn" style={styles.button} type="button" onClick={SpeechRecognition.stopListening}><img src={'/stop-icon.svg'} alt='stop' /></button>
                             <button className="btn btn-lg speech-btn" style={styles.button} type="button" onClick={listenContinuously}><img src={'/mic-icon.svg'} alt='record' /></button>
-                            <Link to="/" style={{ color: "hsl(239, 75%, 40%)", float: "right", top: "5px" }}>← Back to Homepage</Link>
+                            <Link to="/ideas" style={{ color: "hsl(239, 75%, 40%)", float: "right", top: "5px" }}>← Back to Homepage</Link>
                         </div>
                         <Input
                             id="title"
