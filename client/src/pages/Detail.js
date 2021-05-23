@@ -38,10 +38,19 @@ function Detail(props) {
         </Col>
       </Row>
       <Row>
-        <Col size="md-2">
+        <Col size="md-4">
           <Link
             to="/ideas"
-            style={{ color: "hsl(239, 75%, 40%)", margin: '15px' }}>← Back to Ideas</Link>
+            style={{ display: 'block', color: "hsl(239, 75%, 40%)", margin: '15px' }}
+          >
+            ← Back to Ideas
+          </Link>
+          <Link
+            to="/speech"
+            style={{ color: "hsl(239, 75%, 40%)", margin: '15px' }}
+          >
+            Add Idea with Speech to Text &#10132;
+          </Link>
         </Col>
       </Row>
     </Container>

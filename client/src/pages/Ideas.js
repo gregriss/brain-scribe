@@ -71,7 +71,6 @@ function Ideas() {
   //   content: ""
   // })
   // }
-
   // const reducer = (state, action) => {
   //   switch (action.type) {
   //     case 'SET_DROP_DEPTH':
@@ -87,7 +86,6 @@ function Ideas() {
   // const [data, dispatch] = React.useReducer(
   //   reducer, { dropDepth: 0, inDropZone: false, fileList: [] }
   // )
-
   return (
     <Container fluid>
       <Row>
