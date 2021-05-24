@@ -52,7 +52,7 @@ const FileUpload = () => {
                 <input
                     type="submit"
                     value="Upload Audio &#8673;"
-                    disabled={!uploadedFile.filename}
+                    // disabled={!uploadedFile.filename}
                     className="btn btn-lg btn-success btn-block mt-2"
                 />
             </form>
