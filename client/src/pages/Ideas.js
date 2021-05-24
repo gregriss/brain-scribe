@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 // import SpeechRecognition from "react-speech-recognition";
 import DeleteBtn from "../components/DeleteBtn";
 import Jumbotron from "../components/Jumbotron";
-// import DragandDrop from "../components/DragandDrop";
+import DragandDrop from "../components/DragandDrop";
 import FileUpload from "../components/FileUpload";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
@@ -19,6 +19,7 @@ function Ideas() {
   // Load all ideas and store them with setIdeas
   useEffect(() => {
     loadIdeas()
+    // setFormObject()
   }, [])
 
   // Loads all ideas and sets them to ideas
@@ -61,35 +62,21 @@ function Ideas() {
   //   // event.preventDefault();
   //   loadIdeas();
   // }
-  // function handleFormReset() {
-  //   console.log('clearing form')
-  //   // const { name, value } = "";
-  //   setFormObject({
-  //     title: "",
-  //     author: "",
-  //     content: ""
-  //   });
-  // setFormObject({
-  //   title: "",
-  //   author: "",
-  //   content: ""
-  // })
-  // }
-  // const reducer = (state, action) => {
-  //   switch (action.type) {
-  //     case 'SET_DROP_DEPTH':
-  //       return { ...state, dropDepth: action.dropDepth }
-  //     case 'SET_IN_DROP_ZONE':
-  //       return { ...state, inDropZone: action.inDropZone };
-  //     case 'ADD_FILE_TO_LIST':
-  //       return { ...state, fileList: state.fileList.concat(action.files) };
-  //     default:
-  //       return state;
-  //   }
-  // };
-  // const [data, dispatch] = React.useReducer(
-  //   reducer, { dropDepth: 0, inDropZone: false, fileList: [] }
-  // )
+  const reducer = (state, action) => {
+    switch (action.type) {
+      case 'SET_DROP_DEPTH':
+        return { ...state, dropDepth: action.dropDepth }
+      case 'SET_IN_DROP_ZONE':
+        return { ...state, inDropZone: action.inDropZone };
+      case 'ADD_FILE_TO_LIST':
+        return { ...state, fileList: state.fileList.concat(action.files) };
+      default:
+        return state;
+    }
+  };
+  const [data, dispatch] = React.useReducer(
+    reducer, { dropDepth: 0, inDropZone: false, fileList: [] }
+  )
   return (
     <Container fluid>
       <Row>
@@ -108,27 +95,25 @@ function Ideas() {
           <FileUpload
           // onClick={handleUpload}
           />
-          {/* <DragandDrop data={data} dispatch={dispatch}>
-          </DragandDrop> */}
+          <DragandDrop data={data} dispatch={dispatch}>
+          </DragandDrop>
+
           <form>
             <Input
               id="title"
               onChange={handleInputChange}
-              // onReset={handleFormReset}
               name="title"
               placeholder="Title (required)"
             />
             <Input
               id="author"
               onChange={handleInputChange}
-              // onReset={handleFormReset}
               name="author"
               placeholder="Author (required)"
             />
             <TextArea
               id="content"
               onChange={handleInputChange}
-              // onReset={handleFormReset}
               name="content"
               placeholder="Content (Optional)"
             />
@@ -137,7 +122,7 @@ function Ideas() {
               onClick={handleFormSubmit}
             >
               Save Idea
-              </FormBtn>
+            </FormBtn>
           </form>
         </Col>
         <Col size="md-6 sm-12">
@@ -160,7 +145,7 @@ function Ideas() {
               </List>
               {/* <Jumbotron>
                 <h2>Uploaded Ideas</h2>
-              </Jumbotron>
+              </Jumbotron> */}
               <ol className="dropped-files" style={{ marginTop: '20px', minHeight: '20px', border: '1px solid #DDD', borderRadius: '4px' }}>
                 {data.fileList.map(f => { // curly braces will be () if mapping like ListItem above
                   // <ListItem key={f.name}>
@@ -174,7 +159,7 @@ function Ideas() {
                     </li>
                   )
                 })}
-              </ol> */}
+              </ol>
             </>
           ) : (
             <h3>No Results to Display &#9785;</h3>
