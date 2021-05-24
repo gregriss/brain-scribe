@@ -8,9 +8,8 @@ router.get('/test', (req, res) => {
     res.json(true);
 });
 
-// post route for uploaded file
+// post route for uploaded file 
 // This moves file to the resources folder so that Google API can access it
-// I coud put this function inside a controller
 router.post('/', (req, res) => {
     if (req.files === null) {
         return res.status(400).json({ msg: 'No file uploaded' });
@@ -20,6 +19,20 @@ router.post('/', (req, res) => {
     const filepath = path.join(__dirname, `../../resources/${file.name}`);
     const ext = file.name.split('.').pop();
 
+    // if (ext === 'txt') {
+    //     const textResult = {
+    //         title: file.name,
+    //         author: "Current User",
+    //         content: JSON.stringify(file.data)
+    //     }
+    //     const textIdea = db.Idea
+    //         .create(textResult)
+    //         .then(data => data).catch(err => console.error(err));
+
+    //     res.json(textIdea);
+    // } else if (ext !== 'flac' && ext !== 'mp3' && ext !== 'wav') {
+    //     console.log('incorrect file type');
+    // }
     // file.mv(`${__dirname}/resources/${file.name}`, err => {
     file.mv(filepath, async err => {
         if (err) {
@@ -41,7 +54,7 @@ router.post('/', (req, res) => {
         // res.json({ fileName: file.name, filePath: `/resources/${file.name}` });
     });
     // console.log(file);
-    console.log(req.files)
+    // console.log('req.files: ' + req.files)
 })
 
 module.exports = router;

@@ -7,14 +7,12 @@ const Text = {
     getText: async function (filename, ext) {
         const client = new speech.SpeechClient();
         // const filename = path.join(__dirname, '../resources/test.wav');
-
         const file = fs.readFileSync(filename);
         const audioBytes = file.toString('base64');
 
         const audio = {
             content: audioBytes
         };
-
         // TODO Switch statement here? To check which encoding?
         // Refactor when I have more energy
         let config;
@@ -43,6 +41,10 @@ const Text = {
                 languageCode: 'en-US'
             }
         }
+        else {
+            console.log('Error occured');
+            return;
+        }
 
         const request = {
             audio: audio,
@@ -50,13 +52,11 @@ const Text = {
         };
 
         const [response] = await client.recognize(request);
-        console.log(response);
+        // console.log(response);
 
         const transcription = response.results.map(result =>
             result.alternatives[0].transcript).join('\n');
         console.log(`Transcription: ${transcription}`);
-        // res.json(transcription);
-        // res.send(console.log(`Transcription: ${transcription}`));
 
         return transcription;
     }

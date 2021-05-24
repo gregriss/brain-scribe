@@ -57,6 +57,10 @@ function Ideas() {
         .catch(err => console.log(err));
     }
   };
+  // function handleUpload() {
+  //   // event.preventDefault();
+  //   loadIdeas();
+  // }
   // function handleFormReset() {
   //   console.log('clearing form')
   //   // const { name, value } = "";
@@ -101,7 +105,9 @@ function Ideas() {
               </h4>
             </Link>
           </Jumbotron>
-          <FileUpload />
+          <FileUpload
+          // onClick={handleUpload}
+          />
           {/* <DragandDrop data={data} dispatch={dispatch}>
           </DragandDrop> */}
           <form>
