@@ -14,20 +14,20 @@ const passport = require("./config/passport");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// File upload package
+// Telling express app to use File upload package
 app.use(fileUpload());
 
 // dotenv package
 // require('dotenv').config();
 
-// We need to use sessions to keep track of our user's login status
+// Using sessions to keep track of our user's login status
 app.use(
   session({ secret: "the secret that always changes", resave: true, saveUninitialized: true })
 );
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Serve up static assets (usually on heroku)
+// Serve up static assets (for deployment on Heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
@@ -35,7 +35,7 @@ if (process.env.NODE_ENV === "production") {
 // Add routes, both API and view
 app.use(routes);
 
-// Connect to the Mongo DB
+// Connect to Mongo DB (Cloud Atlas OR localhost)
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost/brainscribe",
   {

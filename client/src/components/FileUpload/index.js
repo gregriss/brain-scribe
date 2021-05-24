@@ -7,7 +7,7 @@ const FileUpload = () => {
     const [uploadedFile, setUploadedFile] = useState({});
     const [error, setError] = useState('');
 
-    const onChange = e => {
+    const handleChange = e => {
         setFile(e.target.files[0]);
         setFilename(e.target.files[0].name);
     }
@@ -45,7 +45,7 @@ const FileUpload = () => {
                         type="file"
                         className="custom-file-input"
                         id="customFile"
-                        onChange={onChange}
+                        onChange={handleChange}
                     />
                     <label className="custom-file-label" htmlFor="customFile">{filename}</label>
                 </div>

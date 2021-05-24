@@ -5,6 +5,7 @@ import DeleteBtn from "../components/DeleteBtn";
 import Jumbotron from "../components/Jumbotron";
 import DragandDrop from "../components/DragandDrop";
 import FileUpload from "../components/FileUpload";
+import SearchForm from "../components/SearchForm";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
@@ -62,6 +63,10 @@ function Ideas() {
   //   // event.preventDefault();
   //   loadIdeas();
   // }
+  function clearForm() {
+
+    setFormObject({});
+  }
   const reducer = (state, action) => {
     switch (action.type) {
       case 'SET_DROP_DEPTH':
@@ -98,7 +103,7 @@ function Ideas() {
           <DragandDrop data={data} dispatch={dispatch}>
           </DragandDrop>
 
-          <form>
+          <form onSubmit={clearForm}>
             <Input
               id="title"
               onChange={handleInputChange}
@@ -129,6 +134,7 @@ function Ideas() {
           <Jumbotron>
             <h1>My Ideas</h1>
           </Jumbotron>
+          <SearchForm />
           {ideas.length ? (
             <>
               <List>
