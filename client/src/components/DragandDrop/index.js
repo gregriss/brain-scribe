@@ -10,7 +10,7 @@ const DragAndDrop = props => {
 
     // *** Added to emulate Upload Component ***
     const [file, setFile] = useState('');
-    const [filename, setFilename] = useState('Or Drag and Drop Audio File')
+    const [filename, setFilename] = useState('Drag and Drop Audio File')
     const [uploadedFile, setUploadedFile] = useState({});
     // const [error, setError] = useState('');
 
@@ -96,6 +96,7 @@ const DragAndDrop = props => {
                 value="Upload"
                 className="btn btn-lg btn-secondary btn-block mt-6"
                 id="customFile"
+                disabled={filename === 'Drag and Drop Audio File'}
             />
         </form>
     );
