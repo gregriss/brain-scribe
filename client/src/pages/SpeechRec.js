@@ -32,9 +32,7 @@ const SpeechRec = () => {
         },
         {
             command: 'reset everything',
-            callback: () => {
-                document.body.style = 'initial'
-            }
+            callback: () => document.body.style = 'initial'
         },
         {
             command: 'clear',
@@ -66,13 +64,6 @@ const SpeechRec = () => {
             }
         },
         {
-            command: "reset background color",
-            callback: () => {
-                setMessage('Okay, I will do that.')
-                document.body.style.background = '#FFF';
-            }
-        },
-        {
             command: "make the font weight *",
             callback: (weight) => {
                 setMessage(`Making Content text ${weight}!`)
@@ -95,6 +86,22 @@ const SpeechRec = () => {
             command: 'open *',
             callback: (website) => {
                 window.open("http://" + (website.split(" ").join("")) + ".com");
+            }
+        },
+        {
+            command: 'go back to ideas page',
+            callback: () => {
+                window.open("http://localhost:3000/ideas")
+            }
+        },
+        {
+            command: 'save this idea',
+            callback: () => {
+                API.saveIdea({
+                    title: (formObject.title ? formObject.title : 'Idea Title'),
+                    author: (formObject.author ? formObject.author : 'Idea Author'),
+                    content: transcript
+                })
             }
         }
     ]

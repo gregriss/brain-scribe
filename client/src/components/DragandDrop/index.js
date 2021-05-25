@@ -76,24 +76,27 @@ const DragAndDrop = props => {
         // }
     };
     return (
-        <form onSubmit={handleSubmit} className={data.inDropZone ? 'drag-drop-zone inside-drag-area' : 'drag-drop-zone'}
+        <form
+            onSubmit={handleSubmit}
+            className={data.inDropZone ? 'drag-drop-zone inside-drag-area' : 'drag-drop-zone'}
             onDrop={e => handleDrop(e)}
             onDragOver={e => handleDragOver(e)}
             onDragEnter={e => handleDragEnter(e)}
             onDragLeave={e => handleDragLeave(e)}
+            style={{ border: '3px dashed #707070' }}
         >
             <input
                 type="file"
                 className="custom-file-input"
                 id="customFile"
                 onChange={onChange}
-                style={{ border: '1px solid black' }}
             >
             </input>
             <label><h3>{filename}</h3></label>
             <input
                 type="submit"
                 value="Upload"
+                style={{ border: '1px solid black' }}
                 className="btn btn-lg btn-secondary btn-block mt-6"
                 id="customFile"
                 disabled={filename === 'Drag and Drop Audio File'}
