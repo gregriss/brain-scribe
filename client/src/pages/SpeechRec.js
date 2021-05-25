@@ -91,15 +91,18 @@ const SpeechRec = () => {
         {
             command: 'go back to ideas page',
             callback: () => {
-                window.open("http://localhost:3000/ideas")
+                SpeechRecognition.stopListening()
+                window.location.replace("http://localhost:3000/ideas")
             }
         },
         {
             command: 'save this idea',
             callback: () => {
                 API.saveIdea({
-                    title: (formObject.title ? formObject.title : 'Idea Title'),
-                    author: (formObject.author ? formObject.author : 'Idea Author'),
+                    // title: (formObject.title ? formObject.title : 'Idea Title'),
+                    // author: (formObject.author ? formObject.author : 'Idea Author'),
+                    title: document.getElementById('title').value,
+                    author: document.getElementById('author').value,
                     content: transcript
                 })
             }
@@ -124,7 +127,7 @@ const SpeechRec = () => {
     // }
 
     if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
-        alert('Your browser does not support speech recognition software! Try Chrome desktop, maybe?');
+        // alert('Your browser does not support speech recognition software! Try Chrome desktop, maybe?');
         console.log('Your browser does not support speech recognition software! Try Chrome desktop, maybe?');
     }
 
@@ -162,75 +165,102 @@ const SpeechRec = () => {
         }
     };
 
-    return (
-        <Container fluid>
-            <Row>
-                <Col size="md-6">
-                    <Jumbotron>
-                        <h1
-                            id="header-text"
+    if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
+        console.log('Your browser does not support speech recognition software! Try Chrome desktop, maybe?');
+        return (
+            <Container fluid>
+                <div
+                    style={{ margin: '3rem' }}
+                >
+                    <h2
+                        style={{ color: '#33334d' }}
+                    >
+                        Your browser does not support speech recognition software! Try Chrome desktop, maybe?
+                    </h2>
+                    <div style={{ marginTop: '1rem' }}>
+                        <Link
+                            to="/ideas"
+                            className="text-info"
                         >
-                            Speech to Text
-                        </h1>
-                    </Jumbotron>
-                    <form>
-                        <div>
-                            <h2>
-                                Listening for Speech:
-                            {' '}
-                                {listening ? 'on' : 'off'}
-                            </h2>
-                        </div>
-                        <div>
-                            <button className="btn btn-lg speech-btn" style={styles.button} type="button" onClick={resetTranscript}><img src={'/reset-icon.svg'} alt='reset' /></button>
-                            <button className="btn btn-lg speech-btn" style={styles.button} type="button" onClick={SpeechRecognition.stopListening}><img src={'/stop-icon.svg'} alt='stop' /></button>
-                            <button className="btn btn-lg speech-btn" style={styles.button} type="button" onClick={listenContinuously}><img src={'/mic-icon.svg'} alt='record' /></button>
-                            <Link to="/ideas" style={{ color: "hsl(239, 75%, 40%)", float: "right", top: "5px" }}>← Back to Ideas</Link>
-                        </div>
-                        <Input
-                            id="title"
-                            name="title"
-                            placeholder="Title (required)"
-                            // onReset={handleFormReset}
-                            onChange={handleInputChange}
-                        />
-                        <Input
-                            id="author"
-                            name="author"
-                            placeholder="Author (required)"
-                            // onReset={handleFormReset}
-                            onChange={handleInputChange}
-                        />
-                        <TextArea
-                            id="content"
-                            name="content"
-                            value={transcript}
-                            placeholder="(Transcript will appear here)"
-                            onChange={handleInputChange}
-                            onClick={handleTyping}
-                        // value={finalTranscript}
-                        >
-                        </TextArea>
-                        <h4>BrainScribe Says:</h4>
-                        <textarea
-                            id="brainscribe-message"
-                            value={message}
-                            onChange={handleInputChange}
-                            style={{ border: '1px solid #DDD', borderRadius: '4px', minHeight: '75px', width: '100%', marginBottom: '6px' }}
-                        >
-                        </textarea>
-                        <FormBtn
-                            id="save-btn"
-                            disabled={!(formObject.author && formObject.title)}
-                            onClick={handleFormSubmit}
-                        >
-                            Save Idea
-                        </FormBtn>
-                    </form>
-                </Col>
-            </Row>
-        </Container>
-    )
+                            ← Back to Ideas
+                        </Link>
+                    </div>
+                </div>
+            </Container >
+        )
+    } else {
+        return (
+            <Container fluid>
+                <Row>
+                    <Col size="md-6">
+                        <Jumbotron>
+                            <h1
+                                id="header-text"
+                            >
+                                Speech to Text
+                            </h1>
+                        </Jumbotron>
+                        <form>
+                            <div>
+                                <h2>
+                                    Listening for Speech:
+                                {' '}
+                                    {listening ? 'on' : 'off'}
+                                </h2>
+                            </div>
+                            <div>
+                                <button className="btn btn-lg speech-btn" style={styles.button} type="button" onClick={resetTranscript}><img src={'/reset-icon.svg'} alt='reset' /></button>
+                                <button className="btn btn-lg speech-btn" style={styles.button} type="button" onClick={SpeechRecognition.stopListening}><img src={'/stop-icon.svg'} alt='stop' /></button>
+                                <button className="btn btn-lg speech-btn" style={styles.button} type="button" onClick={listenContinuously}><img src={'/mic-icon.svg'} alt='record' /></button>
+                                <Link to="/ideas" style={{ color: "hsl(239, 75%, 40%)", float: "right", top: "5px" }}>← Back to Ideas</Link>
+                            </div>
+                            <Input
+                                id="title"
+                                name="title"
+                                placeholder="Title (required)"
+                                // onReset={handleFormReset}
+                                onChange={handleInputChange}
+                            />
+                            <Input
+                                id="author"
+                                name="author"
+                                placeholder="Author (required)"
+                                // onReset={handleFormReset}
+                                onChange={handleInputChange}
+                            />
+                            <TextArea
+                                id="content"
+                                name="content"
+                                value={transcript}
+                                placeholder="(Transcript will appear here)"
+                                onChange={handleInputChange}
+                                onClick={handleTyping}
+                            // value={finalTranscript}
+                            >
+                            </TextArea>
+                            <h4>BrainScribe Says:</h4>
+                            <textarea
+                                id="brainscribe-message"
+                                value={message}
+                                onChange={handleInputChange}
+                                style={{ border: '1px solid #DDD', borderRadius: '4px', minHeight: '75px', width: '100%', marginBottom: '6px' }}
+                            >
+                            </textarea>
+                            <FormBtn
+                                id="save-btn"
+                                disabled={!(formObject.author && formObject.title)}
+                                onClick={handleFormSubmit}
+                            >
+                                Save Idea
+                            </FormBtn>
+                        </form>
+                    </Col>
+                </Row>
+            </Container>
+        )
+    }
+
+
 }
 
 export default SpeechRec;
