@@ -36,7 +36,7 @@ function LoginForm(props) {
             //     console.log(err);
             // });
         } catch {
-            setError('Login failed. Please check your info and try again.')
+            setError('Login failed. Please check your information and try again.')
         }
         // console.log("submit happened");
         // console.log({ email: emailInput.current.value, password: passwordInput.current.value});

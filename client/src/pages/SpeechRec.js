@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import API from "../utils/API";
 import { Link } from "react-router-dom";
+import Jumbotron from "../components/Jumbotron";
 import { Container, Row, Col } from "../components/Grid";
 import { Input, TextArea, FormBtn } from "../components/Form";
 
@@ -22,7 +23,21 @@ const SpeechRec = () => {
     const [formObject, setFormObject] = useState({})
     const commands = [
         {
+            command: 'hello',
+            callback: () => setMessage('Hi there!')
+        },
+        {
             command: 'reset',
+            callback: () => resetTranscript()
+        },
+        {
+            command: 'reset everything',
+            callback: () => {
+                document.body.style = 'initial'
+            }
+        },
+        {
+            command: 'clear',
             callback: () => resetTranscript()
         },
         {
@@ -30,16 +45,57 @@ const SpeechRec = () => {
             callback: () => SpeechRecognition.stopListening()
         },
         {
+            command: 'make the title *',
+            callback: (title) => {
+                setMessage(`Changing the Title to ${title}...`)
+                document.getElementById('title').value = title
+            }
+        },
+        {
+            command: 'make the author *',
+            callback: (author) => {
+                setMessage(`Changing the Author to ${author}...`)
+                document.getElementById('author').value = author
+            }
+        },
+        {
+            command: "Make the background *",
+            callback: (color) => {
+                setMessage('changing color...')
+                document.body.style.background = color;
+            }
+        },
+        {
+            command: "reset background color",
+            callback: () => {
+                setMessage('Okay, I will do that.')
+                document.body.style.background = '#FFF';
+            }
+        },
+        {
+            command: "make the font weight *",
+            callback: (weight) => {
+                setMessage(`Making Content text ${weight}!`)
+                document.getElementById('content').style.fontWeight = weight
+            }
+        },
+        {
+            command: "make the text color *",
+            callback: (color) => document.body.style.color = color
+        },
+        {
+            command: "make the save button *",
+            callback: (attribute) => document.getElementById('save-btn').style.background = attribute
+        },
+        {
             command: 'shut up',
             callback: () => setMessage('I wasn\'t talking.')
         },
         {
-            command: 'Hello',
-            callback: () => setMessage('Hi there!')
-        },
-        {
-            command: 'clear',
-            callback: () => resetTranscript()
+            command: 'open *',
+            callback: (website) => {
+                window.open("http://" + (website.split(" ").join("")) + ".com");
+            }
         }
     ]
     const {
@@ -56,11 +112,12 @@ const SpeechRec = () => {
         }
     }, [interimTranscript, finalTranscript]);
 
-    if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
-        return null;
-    }
+    // if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
+    //     return null;
+    // }
 
     if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
+        alert('Your browser does not support speech recognition software! Try Chrome desktop, maybe?');
         console.log('Your browser does not support speech recognition software! Try Chrome desktop, maybe?');
     }
 
@@ -78,6 +135,10 @@ const SpeechRec = () => {
         // console.log(value);
     };
 
+    function handleTyping(event) {
+        const { name, value } = event.target;
+        setFormObject({ ...formObject, [name]: value })
+    }
     // When the form is submitted, use the API.saveIdea method to save the idea data
     // Then reload ideas from the database
     function handleFormSubmit(event) {
@@ -89,6 +150,7 @@ const SpeechRec = () => {
                 content: transcript
             })
                 .then(res => resetTranscript())
+                .then(res => setMessage('Idea Saved!!!'))
                 .catch(err => console.log(err));
         }
     };
@@ -97,6 +159,13 @@ const SpeechRec = () => {
         <Container fluid>
             <Row>
                 <Col size="md-6">
+                    <Jumbotron>
+                        <h1
+                            id="header-text"
+                        >
+                            Speech to Text
+                        </h1>
+                    </Jumbotron>
                     <form>
                         <div>
                             <h2>
@@ -128,17 +197,23 @@ const SpeechRec = () => {
                         <TextArea
                             id="content"
                             name="content"
-                            // onChange={handleInputChange}
-                            defaultValue={transcript}
+                            value={transcript}
+                            placeholder="(Transcript will appear here)"
+                            onChange={handleInputChange}
+                            onClick={handleTyping}
+                        // value={finalTranscript}
                         >
                         </TextArea>
                         <h4>BrainScribe Says:</h4>
-                        <div
+                        <textarea
+                            id="brainscribe-message"
                             value={message}
-                            style={{ border: '1px solid #DDD', borderRadius: '4px', minHeight: '75px', marginBottom: '6px' }}
+                            onChange={handleInputChange}
+                            style={{ border: '1px solid #DDD', borderRadius: '4px', minHeight: '75px', width: '100%', marginBottom: '6px' }}
                         >
-                        </div>
+                        </textarea>
                         <FormBtn
+                            id="save-btn"
                             disabled={!(formObject.author && formObject.title)}
                             onClick={handleFormSubmit}
                         >
@@ -164,12 +239,10 @@ export default SpeechRec;
 //         startListening: PropTypes.func,
 //         recognition: PropTypes.object
 //     }
-
 //     const options = {
 //         autoStart: false,
 //         continuous: false
 //     }
-
 //     function record() {
 //         let recognition = this.props.recognition
 //         recognition.start()
