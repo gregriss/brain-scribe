@@ -20,6 +20,8 @@ const styles = {
 }
 
 const SpeechRec = () => {
+    const [title, setTitle] = useState('');
+    const [author, setAuthor] = useState('');
     const [message, setMessage] = useState('');
     const [formObject, setFormObject] = useState({})
 
@@ -52,26 +54,50 @@ const SpeechRec = () => {
             command: 'make the title *',
             callback: (title) => {
                 setMessage(`Changing the Title to ${title}...`)
-                document.getElementById('title').value = title
+                // document.getElementById('title').value = title
+                setTitle(title)
             }
         },
         {
             command: 'the title is *',
-            callback: (title) => document.getElementById('title').value = title
+            callback: (title) => setTitle(title)
+            // document.getElementById('title').value = title
+        },
+        {
+            command: 'my title is *',
+            callback: (title) => setTitle(title)
+        },
+        {
+            command: 'reset the title',
+            callback: () => setTitle('')
         },
         {
             command: 'make the author *',
             callback: (author) => {
                 setMessage(`Changing the Author to ${author}...`)
-                document.getElementById('author').value = author
+                setAuthor(author)
+                // document.getElementById('author').value = author
             }
         },
         {
             command: 'the author is *',
             callback: (author) => {
                 setMessage(`Changing the Author to ${author}...`)
-                document.getElementById('author').value = author
+                setAuthor(author)
+                // document.getElementById('author').value = author
             }
+        },
+        {
+            command: 'my author is *',
+            callback: (author) => setAuthor(author)
+        },
+        {
+            command: 'reset author',
+            callback: () => setAuthor('')
+        },
+        {
+            command: 'reset the author',
+            callback: () => setAuthor('')
         },
         {
             command: "Make the background *",
@@ -108,26 +134,48 @@ const SpeechRec = () => {
         {
             command: 'go back to the ideas page',
             callback: () => {
-                SpeechRecognition.stopListening()
-                window.location.replace("http://localhost:3000/ideas")
+                stopMic()
+                window.location.replace("https://brain-scribe.herokuapp.com/ideas")
             }
         },
         {
             command: 'go back to ideas page',
             callback: () => {
-                SpeechRecognition.stopListening()
-                window.location.replace("http://localhost:3000/ideas")
+                stopMic()
+                window.location.replace("https://brain-scribe.herokuapp.com/ideas")
+            }
+        },
+        {
+            command: 'go home',
+            callback: () => {
+                stopMic()
+                window.location.replace("https://brain-scribe.herokuapp.com/ideas")
             }
         },
         {
             command: 'save this idea',
             callback: () => {
+                stopMic()
                 API.saveIdea({
                     title: document.getElementById('title').value,
                     author: document.getElementById('author').value,
                     // content: transcript
                     content: document.getElementById('content').value
                 })
+                setMessage('Saving Now! :)')
+            }
+        },
+        {
+            command: 'save my idea',
+            callback: () => {
+                SpeechRecognition.stopListening()
+                API.saveIdea({
+                    title: document.getElementById('title').value,
+                    author: document.getElementById('author').value,
+                    // content: transcript
+                    content: document.getElementById('content').value
+                })
+                setMessage('Saving Now! :)')
             }
         }
     ]
@@ -241,12 +289,14 @@ const SpeechRec = () => {
                             <Input
                                 id="title"
                                 name="title"
+                                value={title}
                                 placeholder="Title (required)"
                                 onChange={handleInputChange}
                             />
                             <Input
                                 id="author"
                                 name="author"
+                                value={author}
                                 placeholder="Author (required)"
                                 onChange={handleInputChange}
                             />
