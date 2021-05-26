@@ -43,12 +43,16 @@ const SpeechRec = () => {
             callback: () => resetTranscript()
         },
         {
-            command: 'reset everything',
-            callback: () => document.body.style = 'initial'
-        },
-        {
             command: 'stop',
             callback: () => stopMic()
+        },
+        {
+            command: 'title is *',
+            callback: (title) => {
+                setMessage(`Changing the Title to ${title}...`)
+                // document.getElementById('title').value = title
+                setTitle(title)
+            }
         },
         {
             command: 'make the title *',
@@ -70,6 +74,18 @@ const SpeechRec = () => {
         {
             command: 'reset the title',
             callback: () => setTitle('')
+        },
+        {
+            command: 'reset title',
+            callback: () => setTitle('')
+        },
+        {
+            command: 'author is *',
+            callback: (author) => {
+                setMessage(`Changing the Author to ${author}...`)
+                setAuthor(author)
+                // document.getElementById('author').value = author
+            }
         },
         {
             command: 'make the author *',
@@ -153,6 +169,13 @@ const SpeechRec = () => {
             }
         },
         {
+            command: 'go to homepage',
+            callback: () => {
+                stopMic()
+                window.location.replace("https://brain-scribe.herokuapp.com/ideas")
+            }
+        },
+        {
             command: 'save this idea',
             callback: () => {
                 stopMic()
@@ -170,12 +193,41 @@ const SpeechRec = () => {
             callback: () => {
                 SpeechRecognition.stopListening()
                 API.saveIdea({
+                    title: title,
+                    author: author,
+                    content: transcript
+                    // title: document.getElementById('title').value,
+                    // author: document.getElementById('author').value,
+                    // // content: transcript
+                    // content: document.getElementById('content').value
+                })
+                setMessage('Saving Now! :)')
+            }
+        },
+        {
+            command: 'save idea',
+            callback: () => {
+                stopMic()
+                API.saveIdea({
                     title: document.getElementById('title').value,
                     author: document.getElementById('author').value,
                     // content: transcript
                     content: document.getElementById('content').value
                 })
-                setMessage('Saving Now! :)')
+                setMessage('Idea saving :)')
+            }
+        },
+        {
+            command: 'save',
+            callback: () => {
+                stopMic()
+                API.saveIdea({
+                    title: document.getElementById('title').value,
+                    author: document.getElementById('author').value,
+                    // content: transcript
+                    content: document.getElementById('content').value
+                })
+                setMessage('Done :)')
             }
         }
     ]

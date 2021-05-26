@@ -17,27 +17,39 @@ const Text = {
         // Refactor when I have more energy
         let config;
 
-        if (ext === "mp3") {
+        if (ext === "flac") {
+            // do not need to specify encoding for flac; it's included in file header
             config = {
-                encoding: 'MP3',
-                sampleRateHertz: 44100,
-                audioChannelCount: 1,
-                languageCode: 'en-US'
-            }
-        }
-        else if (ext === "flac") {
-            config = {
-                encoding: 'FLAC',
+                // encoding: 'FLAC',
                 sampleRateHertz: 48000,
                 audioChannelCount: 2,
                 languageCode: 'en-US'
             };
         }
         else if (ext === "wav") {
+            // do not need to specify encoding for wav; it's included in file header
             config = {
-                encoding: 'LINEAR16',
+                // encoding: 'LINEAR16',
                 sampleRateHertz: 44100,
                 audioChannelCount: 2,
+                languageCode: 'en-US'
+            }
+        }
+        else if (ext === "mp3") {
+            // sampleRateHertz must match the file exactly; mp3 have only worked 
+            // after using online audio converter
+            config = {
+                encoding: 'MP3',
+                sampleRateHertz: 44100,
+                audioChannelCount: 2,
+                languageCode: 'en-US'
+            }
+        }
+        else if (ext === "amr") {
+            config = {
+                encoding: 'AMR',
+                sampleRateHertz: '8000',
+                audioChannelCount: 1,
                 languageCode: 'en-US'
             }
         }
@@ -53,7 +65,6 @@ const Text = {
 
         const [response] = await client.recognize(request);
         // console.log(response);
-
         const transcription = response.results.map(result =>
             result.alternatives[0].transcript).join('\n');
         console.log(`Transcription: ${transcription}`);

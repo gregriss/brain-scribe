@@ -97,7 +97,7 @@ const DragAndDrop = props => {
                 type="submit"
                 value="Upload"
                 style={{ border: '1px solid black' }}
-                className="btn btn-lg btn-secondary btn-block mt-6"
+                className="btn btn-secondary btn-block mt-6"
                 id="customFile"
                 disabled={filename === 'Drag and Drop Audio File'}
             />

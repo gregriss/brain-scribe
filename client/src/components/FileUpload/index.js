@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const FileUpload = () => {
     const [file, setFile] = useState('');
-    const [filename, setFilename] = useState('Choose mp3, wav, or flac file');
+    const [filename, setFilename] = useState('Choose wav, flac, mp3, or amr file');
     const [uploadedFile, setUploadedFile] = useState({});
     const [error, setError] = useState('');
 
@@ -13,7 +13,7 @@ const FileUpload = () => {
     }
 
     const handleSubmit = async e => {
-        // e.preventDefault();
+        e.preventDefault();
         const formData = new FormData();
         formData.append('file', file);
         try {
@@ -23,7 +23,7 @@ const FileUpload = () => {
                     'Content-Type': 'multi-part/form-data'
                 }
             });
-            // console.log(res);
+            console.log(res);
             const { fileName, filePath } = res.data;
             setUploadedFile({ fileName, filePath });
         } catch (err) {
