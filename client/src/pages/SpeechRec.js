@@ -8,11 +8,12 @@ import { Input, TextArea, FormBtn } from "../components/Form";
 
 const styles = {
     button: {
-        background: 'hsl(239, 75%, 70%)',
+        // background: 'hsl(239, 75%, 70%)',
+        background: 'hsl(239, 65%, 55%)',
         height: '60px',
         width: '60px',
         border: '1px solid #DDD',
-        margin: '6px 2px',
+        margin: '6px 3px',
         padding: '0',
         alignContent: 'center'
     }
@@ -21,22 +22,27 @@ const styles = {
 const SpeechRec = () => {
     const [message, setMessage] = useState('');
     const [formObject, setFormObject] = useState({})
+
     const commands = [
         {
             command: 'hello',
             callback: () => setMessage('Hi there!')
         },
         {
+            command: 'how\'s it going',
+            callback: () => setMessage('Pretty well. How about you?')
+        },
+        {
             command: 'reset',
+            callback: () => resetTranscript()
+        },
+        {
+            command: 'clear',
             callback: () => resetTranscript()
         },
         {
             command: 'reset everything',
             callback: () => document.body.style = 'initial'
-        },
-        {
-            command: 'clear',
-            callback: () => resetTranscript()
         },
         {
             command: 'stop',
@@ -48,6 +54,10 @@ const SpeechRec = () => {
                 setMessage(`Changing the Title to ${title}...`)
                 document.getElementById('title').value = title
             }
+        },
+        {
+            command: 'the title is *',
+            callback: (title) => document.getElementById('title').value = title
         },
         {
             command: 'make the author *',
@@ -89,7 +99,7 @@ const SpeechRec = () => {
             }
         },
         {
-            command: 'go back to ideas page',
+            command: 'go back to the ideas page',
             callback: () => {
                 SpeechRecognition.stopListening()
                 window.location.replace("http://localhost:3000/ideas")
@@ -116,18 +126,14 @@ const SpeechRec = () => {
         listening,
     } = useSpeechRecognition({ commands });
 
+    // check out whether I can update TextArea state in a useEffect
     useEffect(() => {
         if (finalTranscript !== '') {
             console.log('Got final result:', finalTranscript);
         }
     }, [interimTranscript, finalTranscript]);
 
-    // if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
-    //     return null;
-    // }
-
     if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
-        // alert('Your browser does not support speech recognition software! Try Chrome desktop, maybe?');
         console.log('Your browser does not support speech recognition software! Try Chrome desktop, maybe?');
     }
 
@@ -136,21 +142,24 @@ const SpeechRec = () => {
             continuous: true,
             language: 'en-US',
         });
+        document.getElementById('record-btn').style.background = '#ff4d4d';
     };
 
+    const stopMic = () => {
+        SpeechRecognition.stopListening({
+            // object?
+        })
+        console.log('Stop Recording');
+        document.getElementById('record-btn').style.background = 'hsl(239, 65%, 55%)';
+    }
     // Handles updating component state when the user types into the input field
     function handleInputChange(event) {
         const { name, value } = event.target;
+
         setFormObject({ ...formObject, [name]: value })
-        // console.log(value);
+        console.log(value);
     };
 
-    function handleTyping(event) {
-        const { name, value } = event.target;
-        setFormObject({ ...formObject, [name]: value })
-    }
-    // When the form is submitted, use the API.saveIdea method to save the idea data
-    // Then reload ideas from the database
     function handleFormSubmit(event) {
         event.preventDefault();
         if (formObject.title && formObject.author) {
@@ -192,11 +201,9 @@ const SpeechRec = () => {
         return (
             <Container fluid>
                 <Row>
-                    <Col size="md-6">
+                    <Col size="xl-6 lg-9 md-12">
                         <Jumbotron>
-                            <h1
-                                id="header-text"
-                            >
+                            <h1 id="header-text">
                                 Speech to Text
                             </h1>
                         </Jumbotron>
@@ -205,45 +212,43 @@ const SpeechRec = () => {
                                 <h2>
                                     Listening for Speech:
                                 {' '}
-                                    {listening ? 'on' : 'off'}
+                                    {listening ? 'On' : 'Off'}
                                 </h2>
                             </div>
                             <div>
-                                <button className="btn btn-lg speech-btn" style={styles.button} type="button" onClick={resetTranscript}><img src={'/reset-icon.svg'} alt='reset' /></button>
-                                <button className="btn btn-lg speech-btn" style={styles.button} type="button" onClick={SpeechRecognition.stopListening}><img src={'/stop-icon.svg'} alt='stop' /></button>
-                                <button className="btn btn-lg speech-btn" style={styles.button} type="button" onClick={listenContinuously}><img src={'/mic-icon.svg'} alt='record' /></button>
-                                <Link to="/ideas" style={{ color: "hsl(239, 75%, 40%)", float: "right", top: "5px" }}>← Back to Ideas</Link>
+                                <button className="btn btn-lg" style={styles.button} type="button" onClick={resetTranscript}><img src={'/reset-icon.svg'} alt='reset' /></button>
+                                <button className="btn btn-lg" style={styles.button} type="button" onClick={stopMic}><img src={'/stop-icon.svg'} alt='stop' /></button>
+                                <button id="record-btn" className="btn btn-lg" style={styles.button} type="button" onClick={listenContinuously}><img src={'/mic-icon.svg'} alt='record' /></button>
+                                <Link to="/ideas" style={{ color: "hsl(239, 75%, 40%)", float: "right" }}>← Back to Ideas</Link>
                             </div>
                             <Input
                                 id="title"
                                 name="title"
                                 placeholder="Title (required)"
-                                // onReset={handleFormReset}
                                 onChange={handleInputChange}
                             />
                             <Input
                                 id="author"
                                 name="author"
                                 placeholder="Author (required)"
-                                // onReset={handleFormReset}
                                 onChange={handleInputChange}
                             />
                             <TextArea
                                 id="content"
                                 name="content"
-                                value={transcript}
+                                defaultValue={transcript}
+                                // value={transcript}
                                 placeholder="(Transcript will appear here)"
                                 onChange={handleInputChange}
-                                onClick={handleTyping}
-                            // value={finalTranscript}
                             >
                             </TextArea>
                             <h4>BrainScribe Says:</h4>
                             <textarea
                                 id="brainscribe-message"
+                                placeholder="Your Wish is My Command..."
                                 value={message}
-                                onChange={handleInputChange}
-                                style={{ border: '1px solid #DDD', borderRadius: '4px', minHeight: '75px', width: '100%', marginBottom: '6px' }}
+                                // onChange={handleInputChange}
+                                style={{ border: '1px solid #DDD', borderRadius: '4px', minHeight: '50px', width: '100%', marginBottom: '6px' }}
                             >
                             </textarea>
                             <FormBtn
@@ -259,86 +264,6 @@ const SpeechRec = () => {
             </Container>
         )
     }
-
-
 }
 
 export default SpeechRec;
-
-
-
-// React version...I need to update React version
-// function SpeechRec() {
-//     const propTypes = {
-//         transcript: PropTypes.string,
-//         resetTranscript: PropTypes.func,
-//         browserSupportsSpeechRecognition: PropTypes.bool,
-//         startListening: PropTypes.func,
-//         recognition: PropTypes.object
-//     }
-//     const options = {
-//         autoStart: false,
-//         continuous: false
-//     }
-//     function record() {
-//         let recognition = this.props.recognition
-//         recognition.start()
-//         recognition.onresult = (event) => {
-//             let voiceLength = event.results[0][0].transcript.split("")
-//             this.setState({ result: event.results[0][0].transcript })
-//             this.check(this.state.result)
-//         }
-//         recognition.onspeechend = () => {
-//             recognition.stop()
-//         }
-//     }
-
-//     return (
-//         <Container fluid>
-//             <Row>
-//                 <Col size="md-6">
-//                     <div>
-//                         <h1>Add a New Idea</h1>
-
-//                         <button
-//                             onClick={record()}>REC</button>
-//                     </div>
-//                     <form>
-//                         <Input
-//                             id="title"
-//                             //   onChange={handleInputChange}
-//                             // onReset={handleFormReset}
-//                             name="title"
-//                             placeholder="Title (required)"
-//                         />
-//                         <Input
-//                             id="author"
-//                             //   onChange={handleInputChange}
-//                             // onReset={handleFormReset}
-//                             name="author"
-//                             placeholder="Author (required)"
-//                         />
-//                         <TextArea
-//                             id="content"
-//                             //   onChange={handleInputChange}
-//                             // onReset={handleFormReset}
-//                             name="content"
-//                             placeholder="Content (Optional)"
-//                         />
-//                         <FormBtn
-//                         // disabled={!(formObject.author && formObject.title)}
-//                         // onClick={handleFormSubmit}
-//                         >
-//                             Save Idea
-//               </FormBtn>
-//                     </form>
-//                 </Col>
-//                 <Col size="md-6 sm-12">
-//                     <h1>My Ideas</h1>
-//                 </Col>
-//             </Row>
-//         </Container>
-//     )
-// }
-
-// export default SpeechRec;
