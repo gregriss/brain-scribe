@@ -40,14 +40,14 @@ function SearchForm() {
                     <button
                         // onClick={handleFormSubmit} 
                         className="btn"
-                        style={{ background: 'hsl(239, 75%, 40%)', color: '#DDD' }}
+                        style={{ background: 'hsl(239, 75%, 40%)', color: '#DDD', border: 'none' }}
                     >
                         Search
                         </button>
                     <button
                         onClick={clearSearch}
                         className="btn"
-                        style={{ background: '#DDD', boxShadow: 'inset 0px 0px 3px #a1a1a1' }}
+                        style={{ background: '#DDD', color: 'gray', border: 'none', boxShadow: 'inset 0px 0px 3px #a1a1a1' }}
                     >
                         Clear
                         </button>

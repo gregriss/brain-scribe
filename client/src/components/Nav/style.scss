@@ -17,6 +17,29 @@
     margin-left: 3px;
 }
 
+.btn {
+    color: #28a745;
+    background: none;
+    border: 1px solid #28a745;
+    transition: 0.15s ease-in-out;
+}
+
+.btn:hover {
+    color: whitesmoke;
+    background: #28a745;
+}
+
+.page-btn {
+    color:hsl(239, 75%, 40%);
+    background: none;
+    border: 1px solid hsl(239, 75%, 40%);
+}
+
+.page-btn:hover {
+    color: whitesmoke;
+    background: hsl(239, 75%, 40%);
+}
+
 #login-expand-btn {
     border: none;
 }

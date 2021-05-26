@@ -1,4 +1,4 @@
-import React, { useState, Fragment, useContext } from "react";
+import React, { useState, useContext } from "react"; // also had Fragment for login expand thing
 import { Link } from "react-router-dom";
 import UserContext from "../../utils/UserContext";
 import LoginForm from "../LoginForm";
@@ -18,21 +18,10 @@ function Nav() {
       </a>
       { (() => {
         if (loggedIn) {
-          return <p className="logged-in-text">Logged in as {email} <Link to="/logout" className="text-primary" style={{ margin: '0 6px' }} onClick={() => setLoginExpanded(false)}>Logout</Link></p>;
+          return (
+            <p className="logged-in-text">Logged in as {email} <Link to="/logout" className="text-primary" style={{ margin: '0 6px' }} onClick={() => setLoginExpanded(false)}>Logout</Link></p>
+          )
         }
-        // else {
-        // if (!loginExpanded) {
-        //   return <button id="login-expand-btn" className="btn btn-outline-success" onClick={() => setLoginExpanded(true)}>Login</button>;
-        // }
-        // else {
-        //   return (
-        //     <Fragment>
-        //       <LoginForm className="top-menu-login" />
-        //       <button id="hide-login-x" onClick={() => setLoginExpanded(false)}>&#10006;</button>
-        //     </Fragment>
-        //   )
-        // }
-        // }
       })()}
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -42,11 +31,17 @@ function Nav() {
           className="navbar-nav mr-auto"
           style={{ justifyContent: 'flex-end' }}
         >
+          {/* {(() => {
+            if (!loggedIn) {
+              return (
+              )
+            }
+          })} */}
           <li className="nav-item">
             <Link
               to="/login"
               className="btn btn-outline-success"
-              id="signup-nav-link"
+              id="login-nav-link"
               style={{ margin: '2px' }}
             >
               Login
@@ -65,7 +60,7 @@ function Nav() {
           <li className="nav-item">
             <Link
               to="/ideas"
-              className="btn btn-outline-info"
+              className="btn page-btn"
               style={{ margin: '2px' }}
               id="ideas-nav-link"
             >
@@ -75,7 +70,7 @@ function Nav() {
           <li className="nav-item">
             <Link
               to="/speech"
-              className="btn btn-outline-info"
+              className="btn page-btn"
               style={{ margin: '2px' }}
               id="speech-nav-link"
             >

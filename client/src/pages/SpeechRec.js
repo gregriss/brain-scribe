@@ -46,7 +46,7 @@ const SpeechRec = () => {
         },
         {
             command: 'stop',
-            callback: () => SpeechRecognition.stopListening()
+            callback: () => stopMic()
         },
         {
             command: 'make the title *',
@@ -61,6 +61,13 @@ const SpeechRec = () => {
         },
         {
             command: 'make the author *',
+            callback: (author) => {
+                setMessage(`Changing the Author to ${author}...`)
+                document.getElementById('author').value = author
+            }
+        },
+        {
+            command: 'the author is *',
             callback: (author) => {
                 setMessage(`Changing the Author to ${author}...`)
                 document.getElementById('author').value = author
@@ -106,14 +113,20 @@ const SpeechRec = () => {
             }
         },
         {
+            command: 'go back to ideas page',
+            callback: () => {
+                SpeechRecognition.stopListening()
+                window.location.replace("http://localhost:3000/ideas")
+            }
+        },
+        {
             command: 'save this idea',
             callback: () => {
                 API.saveIdea({
-                    // title: (formObject.title ? formObject.title : 'Idea Title'),
-                    // author: (formObject.author ? formObject.author : 'Idea Author'),
                     title: document.getElementById('title').value,
                     author: document.getElementById('author').value,
-                    content: transcript
+                    // content: transcript
+                    content: document.getElementById('content').value
                 })
             }
         }
@@ -143,6 +156,8 @@ const SpeechRec = () => {
             language: 'en-US',
         });
         document.getElementById('record-btn').style.background = '#ff4d4d';
+        document.getElementById('header-text').textContent = 'Recording!';
+        document.getElementById('header-text').style.color = '#ff4d4d'
     };
 
     const stopMic = () => {
@@ -151,6 +166,8 @@ const SpeechRec = () => {
         })
         console.log('Stop Recording');
         document.getElementById('record-btn').style.background = 'hsl(239, 65%, 55%)';
+        document.getElementById('header-text').textContent = 'Speech to Text';
+        document.getElementById('header-text').style.color = 'hsl(239, 75%, 40%)';
     }
     // Handles updating component state when the user types into the input field
     function handleInputChange(event) {
@@ -191,7 +208,7 @@ const SpeechRec = () => {
                             to="/ideas"
                             className="text-info"
                         >
-                            ← Back to Ideas
+                            ← Back to Ideas/Home
                         </Link>
                     </div>
                 </div>
@@ -219,7 +236,7 @@ const SpeechRec = () => {
                                 <button className="btn btn-lg" style={styles.button} type="button" onClick={resetTranscript}><img src={'/reset-icon.svg'} alt='reset' /></button>
                                 <button className="btn btn-lg" style={styles.button} type="button" onClick={stopMic}><img src={'/stop-icon.svg'} alt='stop' /></button>
                                 <button id="record-btn" className="btn btn-lg" style={styles.button} type="button" onClick={listenContinuously}><img src={'/mic-icon.svg'} alt='record' /></button>
-                                <Link to="/ideas" style={{ color: "hsl(239, 75%, 40%)", float: "right" }}>← Back to Ideas</Link>
+                                <Link to="/ideas" style={{ color: "hsl(239, 75%, 40%)", float: "right" }}>← Back to Ideas/Home</Link>
                             </div>
                             <Input
                                 id="title"
