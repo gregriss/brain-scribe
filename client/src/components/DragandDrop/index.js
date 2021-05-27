@@ -83,7 +83,7 @@ const DragAndDrop = props => {
             onDragOver={e => handleDragOver(e)}
             onDragEnter={e => handleDragEnter(e)}
             onDragLeave={e => handleDragLeave(e)}
-            style={{ border: '3px dashed #707070', marginTop: '2rem' }}
+            style={{ border: '3px dashed #707070', marginTop: '1rem', padding: '24px' }}
         >
             <input
                 type="file"
@@ -97,7 +97,7 @@ const DragAndDrop = props => {
                 type="submit"
                 value="Upload"
                 style={{ border: '1px solid black' }}
-                className="btn btn-secondary btn-block mt-6"
+                className="btn btn-light btn-block mt-6 drag-upload-btn"
                 id="customFile"
                 disabled={filename === 'Drag and Drop Audio File'}
             />

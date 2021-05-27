@@ -3,7 +3,8 @@
     margin: 0 0 2rem 0;
     text-align: center;
     /* background: #07F; */
-    background: hsl(0, 0%, 92%);
+    /* background: hsl(0, 0%, 92%); */
+    background: #eeeef7;
     color: hsl(239, 75%, 50%);
     /* color: #FFF; */
     border-radius: 0.5rem;
@@ -14,4 +15,9 @@
   }
   .drag-drop-zone.inside-drag-area {
     opacity: 0.8;
+  }
+
+  .drag-upload-btn:enabled {
+    color: #EEE;
+    background:hsl(239, 75%, 50%);
   }

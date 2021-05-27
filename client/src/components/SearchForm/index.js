@@ -38,6 +38,7 @@ function SearchForm() {
                 />
                 <div className="input-group-append">
                     <button
+                        // onClick={filterIdeas}
                         // onClick={handleFormSubmit} 
                         className="btn"
                         style={{ background: 'hsl(239, 75%, 40%)', color: '#DDD', border: 'none' }}

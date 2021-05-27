@@ -64,48 +64,71 @@ function Detail(props) {
       <Row>
         <Col size="md-12">
           <Jumbotron>
-            <h1
+            <h2
               onChange={handleInputChange}
             >
               {idea.title} by {idea.author}
-            </h1>
+            </h2>
+            {/* <h5>{idea.date}</h5> */}
           </Jumbotron>
+        </Col>
+      </Row>
+      <Row >
+        <Col size="md-6">
+          <div style={{ marginBottom: '20px' }}>
+            <Link
+              to="/ideas"
+              style={{ color: "hsl(239, 75%, 40%)", margin: '0 15px 0 0' }}
+            >
+              ← Back to Ideas
+            </Link>
+            <Link
+              to="/speech"
+              style={{ color: "hsl(239, 75%, 40%)" }}
+            >
+              Add Idea with Speech to Text &#10132;
+            </Link>
+          </div>
         </Col>
       </Row>
       <Row>
         <Col size="md-8 lg-6">
-          <form>
-            <h3>Update Your Idea</h3>
-            <Input
-              id="title"
-              onChange={handleInputChange}
-              name="title"
-              placeholder="Title (required)"
-              defaultValue={idea.title}
-            />
-            <Input
-              id="author"
-              onChange={handleInputChange}
-              name="author"
-              placeholder="Author (required)"
-              defaultValue={idea.author}
-            />
-            <TextArea
-              id="content"
-              onChange={handleInputChange}
-              name="content"
-              defaultValue={idea.content}
-              placeholder="Content (Optional)"
-            />
-            <FormBtn
-              // disabled={!(formObject.author && formObject.title)}
-              // disabled={!handleInputChange}
-              onClick={handleFormSubmit}
-            // onClick={putIdea}
-            >
-              Update Idea
+          <div className="card"
+            style={{ background: '#eeeef7', padding: '20px 30px', borderLeft: '4px solid #BBB', borderBottom: '4px solid #AAA' }}
+          >
+            <h3 className="card-title">Type to Edit</h3>
+            <form>
+              <Input
+                id="title"
+                onChange={handleInputChange}
+                name="title"
+                placeholder="Title (required)"
+                defaultValue={idea.title}
+              />
+              <Input
+                id="author"
+                onChange={handleInputChange}
+                name="author"
+                placeholder="Author (required)"
+                defaultValue={idea.author}
+              />
+              <TextArea
+                id="content"
+                onChange={handleInputChange}
+                name="content"
+                defaultValue={idea.content}
+                placeholder="Content (Optional)"
+              />
+              <FormBtn
+                // disabled={!(formObject.author && formObject.title)}
+                // disabled={!handleInputChange}
+                onClick={handleFormSubmit}
+              // onClick={putIdea}
+              >
+                Update Idea
             </FormBtn>
-          </form>
+            </form>
+          </div>
         </Col>
       </Row>
       {/* <Row>
@@ -118,22 +141,7 @@ function Detail(props) {
           </article>
         </Col>
       </Row> */}
-      <Row>
-        <Col size="md-4">
-          <Link
-            to="/ideas"
-            style={{ display: 'block', color: "hsl(239, 75%, 40%)", margin: '15px' }}
-          >
-            ← Back to Ideas
-          </Link>
-          <Link
-            to="/speech"
-            style={{ color: "hsl(239, 75%, 40%)", margin: '15px' }}
-          >
-            Add Idea with Speech to Text &#10132;
-          </Link>
-        </Col>
-      </Row>
+
     </Container>
   );
 }

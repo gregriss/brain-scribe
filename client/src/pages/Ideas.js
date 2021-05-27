@@ -5,7 +5,7 @@ import DeleteBtn from "../components/DeleteBtn";
 import Jumbotron from "../components/Jumbotron";
 import DragandDrop from "../components/DragandDrop";
 import FileUpload from "../components/FileUpload";
-import SearchForm from "../components/SearchForm";
+// import SearchForm from "../components/SearchForm";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
@@ -20,7 +20,6 @@ function Ideas() {
   // Load all ideas and store them with setIdeas
   useEffect(() => {
     loadIdeas()
-    // setFormObject()
   }, [])
 
   // Loads all ideas and sets them to ideas
@@ -32,6 +31,15 @@ function Ideas() {
       .catch(err => console.log(err));
   };
 
+  // function filterIdeas() {
+  //   API.getIdeas()
+  //     .then(res =>
+  //       res.filter(result => {
+  //         if (res.data)
+  //           console.log('res.data is here: ' + res.data)
+  //         return true;
+  //       }))
+  // }
   // Deletes a book from the database with a given id, then reloads ideas from the db
   function deleteIdea(id) {
     API.deleteIdea(id)
@@ -45,6 +53,10 @@ function Ideas() {
     setFormObject({ ...formObject, [name]: value })
   };
 
+  // function handleSearch(event) {
+  //   event.preventDefault()
+  //   filterIdeas()
+  // }
   // When the form is submitted, use the API.saveIdea method to save the idea data
   // Then reload ideas from the database
   function handleFormSubmit(event) {
@@ -56,6 +68,7 @@ function Ideas() {
         content: formObject.content
       })
         .then(res => loadIdeas())
+        // .then(res => clearForm())
         .catch(err => console.log(err));
     }
   };
@@ -63,10 +76,10 @@ function Ideas() {
   //   // event.preventDefault();
   //   loadIdeas();
   // }
-  function clearForm() {
-
-    setFormObject({});
-  }
+  // function clearForm() {
+  //   document.querySelector('#title').textContent = "";
+  //   setFormObject({});
+  // }
   const reducer = (state, action) => {
     switch (action.type) {
       case 'SET_DROP_DEPTH':
@@ -97,11 +110,8 @@ function Ideas() {
               </h4>
             </Link>
           </Jumbotron>
-          <FileUpload />
-          <DragandDrop data={data} dispatch={dispatch}>
-          </DragandDrop>
 
-          <form onSubmit={clearForm}>
+          <form>
             <Input
               id="title"
               onChange={handleInputChange}
@@ -129,10 +139,17 @@ function Ideas() {
           </form>
         </Col>
         <Col size="md-6 sm-12">
-          <Jumbotron>
+          <DragandDrop data={data} dispatch={dispatch}>
+          </DragandDrop>
+          <FileUpload />
+          {/* <Jumbotron>
             <h1>My Ideas</h1>
-          </Jumbotron>
-          <SearchForm />
+          </Jumbotron> */}
+          {/* <SearchForm
+            // onChange={handleSearchChange}
+            onSubmit={handleSearch}
+          /> */}
+          <h2 style={{ margin: '30px 0', textAlign: 'center' }}>My Ideas</h2>
           {ideas.length ? (
             <List>
               {ideas.map(idea => (
@@ -147,7 +164,7 @@ function Ideas() {
               ))}
             </List>
           ) : (
-            <h3>No Results to Display &#9785;</h3>
+            <h3 style={{ color: 'darkgray', textAlign: 'center' }}>No Results to Display &#9785;</h3>
           )}
         </Col>
       </Row>

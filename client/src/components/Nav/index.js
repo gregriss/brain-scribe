@@ -20,7 +20,7 @@ function Nav() {
       {(() => {
         if (loggedIn) {
           return (
-            <p className="logged-in-text">Logged in as {email} <Link to="/logout" className="text-primary" style={{ margin: '0 3px' }}>Logout</Link></p>
+            <p className="logged-in-text">Logged in as {email} <Link to="/logout" className="text-primary" style={{ margin: '0 8px' }}>Logout</Link></p>
             // <p className="logged-in-text">Logged in as {email} <Link to="/logout" className="text-primary" style={{ margin: '0 6px' }} onClick={() => setLoginExpanded(false)}>Logout</Link></p>
           )
         }
