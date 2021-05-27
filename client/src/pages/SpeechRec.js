@@ -320,7 +320,7 @@ const SpeechRec = () => {
                         >
                             <form>
                                 <div>
-                                    <h2>
+                                    <h2 style={{ color: 'hsl(265, 75%, 30%)' }}>
                                         Listening for Speech:
                                 {' '}
                                         {listening ? 'On' : 'Off'}

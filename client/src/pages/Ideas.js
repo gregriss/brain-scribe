@@ -80,7 +80,7 @@ function Ideas() {
             <Link
               to="/speech"
               style={{
-                textDecorationColor: 'hsl(265, 75%, 30%'
+                textDecorationColor: 'hsl(265, 75%, 30%)'
               }}
             >
               <h3 className="text-success">
@@ -92,6 +92,9 @@ function Ideas() {
           <div className="card"
             style={{ background: '#eeeef7', padding: '20px 30px', borderLeft: '4px solid #afafd0', borderBottom: '4px solid #8f8fbd' }}
           >
+            <h2 style={{ color: 'hsl(265, 75%, 30%)' }}>
+              Type a New Idea
+            </h2>
             <form>
               <Input
                 id="title"
@@ -124,22 +127,26 @@ function Ideas() {
           <DragandDrop data={data} dispatch={dispatch}>
           </DragandDrop>
           <FileUpload />
-          <h2 style={{ margin: '30px 0', textAlign: 'center' }}>My Ideas</h2>
           {ideas.length ? (
-            <List>
-              {ideas.map(idea => (
-                <ListItem key={idea._id}>
-                  <Link to={"/ideas/" + idea._id}>
-                    <strong>
-                      {idea.title} by {idea.author}
-                    </strong>
-                  </Link>
-                  <DeleteBtn onClick={() => deleteIdea(idea._id)} />
-                </ListItem>
-              ))}
-            </List>
+            <div className="card"
+              style={{ background: '#eeeef7', margin: '2rem 0', padding: '20px 30px', borderLeft: '4px solid #afafd0', borderBottom: '4px solid #8f8fbd' }}
+            >
+              <h2 style={{ margin: '0 0 0.5rem 0.5rem', color: 'hsl(265, 75%, 30%)' }}>My Ideas</h2>
+              <List>
+                {ideas.map(idea => (
+                  <ListItem key={idea._id}>
+                    <Link to={"/ideas/" + idea._id}>
+                      <strong>
+                        {idea.title} by {idea.author}
+                      </strong>
+                    </Link>
+                    <DeleteBtn onClick={() => deleteIdea(idea._id)} />
+                  </ListItem>
+                ))}
+              </List>
+            </div>
           ) : (
-            <h3 style={{ color: 'darkgray', textAlign: 'center' }}>No Results to Display &#9785;</h3>
+            <h3 style={{ color: 'darkgray', marginTop: '1rem' }}>No Ideas to Display &#9785;</h3>
           )}
         </Col>
       </Row>
