@@ -59,7 +59,8 @@ const FileUpload = () => {
                     type="submit"
                     value="Upload Audio &#8673;"
                     disabled={filename === 'Choose wav, flac, mp3, or amr file'}
-                    className="btn btn-lg btn-success btn-block mt-2"
+                    className="btn btn-lg btn-block mt-2"
+                    style={{ color: 'white', background: 'hsl(0, 85%, 50%)', border: 'none' }}
                 />
             </form>
         </Fragment>

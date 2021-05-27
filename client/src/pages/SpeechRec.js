@@ -9,7 +9,8 @@ import { Input, TextArea, FormBtn } from "../components/Form";
 const styles = {
     button: {
         // background: 'hsl(239, 75%, 70%)',
-        background: 'hsl(239, 65%, 55%)',
+        // background: 'hsl(239, 65%, 55%)',
+        background: 'hsl(265, 75%, 30%)',
         height: '60px',
         width: '60px',
         border: '1px solid #DDD',
@@ -18,7 +19,6 @@ const styles = {
         alignContent: 'center'
     }
 }
-
 const SpeechRec = () => {
     const [title, setTitle] = useState('');
     const [author, setAuthor] = useState('');
@@ -260,20 +260,17 @@ const SpeechRec = () => {
     };
 
     const stopMic = () => {
-        SpeechRecognition.stopListening({
-            // object?
-        })
+        SpeechRecognition.stopListening({})
         console.log('Stop Recording');
-        document.getElementById('record-btn').style.background = 'hsl(239, 65%, 55%)';
+        document.getElementById('record-btn').style.background = 'hsl(265, 75%, 30%)';
         document.getElementById('header-text').textContent = 'Speech to Text';
-        document.getElementById('header-text').style.color = 'hsl(239, 75%, 40%)';
+        document.getElementById('header-text').style.color = 'hsl(265, 75%, 30%)';
     }
     // Handles updating component state when the user types into the input field
     function handleInputChange(event) {
         const { name, value } = event.target;
-
         setFormObject({ ...formObject, [name]: value })
-        console.log(value);
+        // console.log(value);
     };
 
     function handleFormSubmit(event) {
@@ -291,27 +288,22 @@ const SpeechRec = () => {
     };
 
     if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
-        console.log('Your browser does not support speech recognition software! Try Chrome desktop, maybe?');
+        console.log('Your browser does not support speech recognition software! Try Chrome desktop, or Edge.');
         return (
             <Container fluid>
-                <div
-                    style={{ margin: '3rem' }}
-                >
-                    <h2
-                        style={{ color: '#33334d' }}
-                    >
-                        Your browser does not support speech recognition software! Try Chrome desktop, maybe?
+                <div style={{ margin: '3rem' }}>
+                    <h2 style={{ color: '#33334d' }}>
+                        Your browser does not support speech recognition software! Try Chrome desktop, or Edge.
                     </h2>
                     <div style={{ marginTop: '1rem' }}>
                         <Link
                             to="/ideas"
-                            className="text-info"
-                        >
+                            className="text-info">
                             ← Back to Ideas/Home
                         </Link>
                     </div>
                 </div>
-            </Container >
+            </Container>
         )
     } else {
         return (
@@ -340,7 +332,6 @@ const SpeechRec = () => {
                                     <button id="record-btn" className="btn btn-lg" style={styles.button} type="button" onClick={listenContinuously}><img src={'/mic-icon-white.svg'} alt='record' /></button>
                                     <Link to="/ideas" style={{ color: "hsl(239, 75%, 40%)", float: "right" }}>← Back to Ideas/Home</Link>
                                 </div>
-
                                 <Input
                                     id="title"
                                     name="title"

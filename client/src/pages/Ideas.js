@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
-// import PropTypes from "prop-types";
-// import SpeechRecognition from "react-speech-recognition";
 import DeleteBtn from "../components/DeleteBtn";
 import Jumbotron from "../components/Jumbotron";
 import DragandDrop from "../components/DragandDrop";
 import FileUpload from "../components/FileUpload";
-// import SearchForm from "../components/SearchForm";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
@@ -31,15 +28,6 @@ function Ideas() {
       .catch(err => console.log(err));
   };
 
-  // function filterIdeas() {
-  //   API.getIdeas()
-  //     .then(res =>
-  //       res.filter(result => {
-  //         if (res.data)
-  //           console.log('res.data is here: ' + res.data)
-  //         return true;
-  //       }))
-  // }
   // Deletes a book from the database with a given id, then reloads ideas from the db
   function deleteIdea(id) {
     API.deleteIdea(id)
@@ -53,10 +41,6 @@ function Ideas() {
     setFormObject({ ...formObject, [name]: value })
   };
 
-  // function handleSearch(event) {
-  //   event.preventDefault()
-  //   filterIdeas()
-  // }
   // When the form is submitted, use the API.saveIdea method to save the idea data
   // Then reload ideas from the database
   function handleFormSubmit(event) {
@@ -72,22 +56,14 @@ function Ideas() {
         .catch(err => console.log(err));
     }
   };
-  // function handleUpload() {
-  //   // event.preventDefault();
-  //   loadIdeas();
-  // }
-  // function clearForm() {
-  //   document.querySelector('#title').textContent = "";
-  //   setFormObject({});
-  // }
   const reducer = (state, action) => {
     switch (action.type) {
       case 'SET_DROP_DEPTH':
         return { ...state, dropDepth: action.dropDepth }
       case 'SET_IN_DROP_ZONE':
         return { ...state, inDropZone: action.inDropZone };
-      case 'ADD_FILE_TO_LIST':
-        return { ...state, fileList: state.fileList.concat(action.files) };
+      // case 'ADD_FILE_TO_LIST':
+      //   return { ...state, fileList: state.fileList.concat(action.files) };
       default:
         return state;
     }
@@ -103,7 +79,9 @@ function Ideas() {
             <h1>Add a New Idea</h1>
             <Link
               to="/speech"
-              style={{ textDecorationColor: 'hsl(239, 75%, 40%)' }}
+              style={{
+                textDecorationColor: 'hsl(265, 75%, 30%'
+              }}
             >
               <h3 className="text-success">
                 Use Speech to Text
@@ -146,13 +124,6 @@ function Ideas() {
           <DragandDrop data={data} dispatch={dispatch}>
           </DragandDrop>
           <FileUpload />
-          {/* <Jumbotron>
-            <h1>My Ideas</h1>
-          </Jumbotron> */}
-          {/* <SearchForm
-            // onChange={handleSearchChange}
-            onSubmit={handleSearch}
-          /> */}
           <h2 style={{ margin: '30px 0', textAlign: 'center' }}>My Ideas</h2>
           {ideas.length ? (
             <List>
