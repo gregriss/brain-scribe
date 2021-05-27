@@ -58,7 +58,6 @@ const SpeechRec = () => {
             command: 'make the title *',
             callback: (title) => {
                 setMessage(`Changing the Title to ${title}...`)
-                // document.getElementById('title').value = title
                 setTitle(title)
             }
         },
@@ -255,9 +254,9 @@ const SpeechRec = () => {
             continuous: true,
             language: 'en-US',
         });
-        document.getElementById('record-btn').style.background = '#ff4d4d';
+        document.getElementById('record-btn').style.background = '#E74724'; // #ff4d4d
         document.getElementById('header-text').textContent = 'Recording!';
-        document.getElementById('header-text').style.color = '#ff4d4d'
+        document.getElementById('header-text').style.color = '#E74724';
     };
 
     const stopMic = () => {
@@ -332,10 +331,10 @@ const SpeechRec = () => {
                                     {listening ? 'On' : 'Off'}
                                 </h2>
                             </div>
-                            <div>
+                            <div style={{ color: '#FFF' }}>
                                 <button className="btn btn-lg" style={styles.button} type="button" onClick={resetTranscript}><img src={'/reset-icon.svg'} alt='reset' /></button>
                                 <button className="btn btn-lg" style={styles.button} type="button" onClick={stopMic}><img src={'/stop-icon.svg'} alt='stop' /></button>
-                                <button id="record-btn" className="btn btn-lg" style={styles.button} type="button" onClick={listenContinuously}><img src={'/mic-icon.svg'} alt='record' /></button>
+                                <button id="record-btn" className="btn btn-lg" style={styles.button} type="button" onClick={listenContinuously}><img src={'/mic-icon-white.svg'} alt='record' /></button>
                                 <Link to="/ideas" style={{ color: "hsl(239, 75%, 40%)", float: "right" }}>← Back to Ideas/Home</Link>
                             </div>
                             <Input
@@ -365,7 +364,7 @@ const SpeechRec = () => {
                             <textarea
                                 id="brainscribe-message"
                                 placeholder="Your Wish is My Command..."
-                                value={message}
+                                defaultValue={message}
                                 // onChange={handleInputChange}
                                 style={{ border: '1px solid #DDD', borderRadius: '4px', minHeight: '50px', width: '100%', marginBottom: '6px' }}
                             >

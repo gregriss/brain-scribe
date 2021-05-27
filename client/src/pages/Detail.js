@@ -19,9 +19,33 @@ function Detail(props) {
 
   function handleInputChange(event) {
     const { name, value } = event.target;
+    // console.log(value);
     setFormObject({ ...formObject, [name]: value })
+    setIdea({
+      title: idea.title,
+      author: idea.author,
+      content: idea.content
+    })
   };
 
+  function deleteIdea(ideaid) {
+    console.log('deleting old idea');
+    API.deleteIdea(ideaid)
+      // .then(res => loadIdeas())
+      .catch(err => console.log(err));
+  }
+  // function putIdea(e) {
+  //   e.preventDefault();
+  //   console.log(ideaid);
+  //   API.updateIdea((ideaid, {
+  //     title: formObject.title,
+  //     author: formObject.author,
+  //     content: formObject.content
+  //   })
+  // .then(res => setIdea(res.data))
+  //     .then(res => console.log('updated idea ' + res))
+  //     .catch(err => console.log('error!!!' + err))
+  // }
   function handleFormSubmit(event) {
     event.preventDefault();
     if (formObject.title && formObject.author) {
@@ -30,7 +54,7 @@ function Detail(props) {
         author: formObject.author,
         content: formObject.content
       })
-        // .then(res => loadIdeas())
+        .then(res => deleteIdea(ideaid))
         .catch(err => console.log(err));
     }
   };
@@ -40,7 +64,9 @@ function Detail(props) {
       <Row>
         <Col size="md-12">
           <Jumbotron>
-            <h1>
+            <h1
+              onChange={handleInputChange}
+            >
               {idea.title} by {idea.author}
             </h1>
           </Jumbotron>
@@ -54,15 +80,15 @@ function Detail(props) {
               id="title"
               onChange={handleInputChange}
               name="title"
-              defaultValue={idea.title}
               placeholder="Title (required)"
+              defaultValue={idea.title}
             />
             <Input
               id="author"
               onChange={handleInputChange}
               name="author"
-              defaultValue={idea.author}
               placeholder="Author (required)"
+              defaultValue={idea.author}
             />
             <TextArea
               id="content"
@@ -72,8 +98,10 @@ function Detail(props) {
               placeholder="Content (Optional)"
             />
             <FormBtn
-              disabled={!(formObject.author && formObject.title)}
+              // disabled={!(formObject.author && formObject.title)}
+              // disabled={!handleInputChange}
               onClick={handleFormSubmit}
+            // onClick={putIdea}
             >
               Update Idea
             </FormBtn>
@@ -109,6 +137,5 @@ function Detail(props) {
     </Container>
   );
 }
-
 
 export default Detail;

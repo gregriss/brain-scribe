@@ -17,6 +17,11 @@ export default {
   saveIdea: function (ideaData) {
     return axios.post("/api/ideas", ideaData);
   },
+  // add Update route to be able to update saved ideas...
+  // this doesn't seem to work yet
+  updateIdea: function (id) {
+    return axios.put("api/ideas" + id);
+  },
   testUserRouter: function () {
     return axios.get("/api/user/test");
   },

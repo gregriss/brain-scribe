@@ -11,7 +11,7 @@ const DragAndDrop = props => {
     // *** Added to emulate Upload Component ***
     const [file, setFile] = useState('');
     const [filename, setFilename] = useState('Drag and Drop Audio File')
-    const [uploadedFile, setUploadedFile] = useState({});
+    // const [uploadedFile, setUploadedFile] = useState({});
     // const [error, setError] = useState('');
 
     const onChange = e => {
@@ -30,8 +30,8 @@ const DragAndDrop = props => {
                     'Content-Type': 'multi-part/form-data'
                 }
             });
-            const { fileName, filePath } = res.data;
-            setUploadedFile({ fileName, filePath });
+            // const { fileName, filePath } = res.data;
+            // setUploadedFile({ fileName, filePath });
         } catch (err) {
             // setError('Upload failed. Please check your file type and try again.')
             console.error(err);
@@ -83,7 +83,7 @@ const DragAndDrop = props => {
             onDragOver={e => handleDragOver(e)}
             onDragEnter={e => handleDragEnter(e)}
             onDragLeave={e => handleDragLeave(e)}
-            style={{ border: '3px dashed #707070' }}
+            style={{ border: '3px dashed #707070', marginTop: '2rem' }}
         >
             <input
                 type="file"

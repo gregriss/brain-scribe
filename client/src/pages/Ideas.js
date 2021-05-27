@@ -97,9 +97,7 @@ function Ideas() {
               </h4>
             </Link>
           </Jumbotron>
-          <FileUpload
-          // onClick={handleUpload}
-          />
+          <FileUpload />
           <DragandDrop data={data} dispatch={dispatch}>
           </DragandDrop>
 
@@ -136,37 +134,18 @@ function Ideas() {
           </Jumbotron>
           <SearchForm />
           {ideas.length ? (
-            <>
-              <List>
-                {ideas.map(idea => (
-                  <ListItem key={idea._id}>
-                    <Link to={"/ideas/" + idea._id}>
-                      <strong>
-                        {idea.title} by {idea.author}
-                      </strong>
-                    </Link>
-                    <DeleteBtn onClick={() => deleteIdea(idea._id)} />
-                  </ListItem>
-                ))}
-              </List>
-              {/* <Jumbotron>
-                <h2>Uploaded Ideas</h2>
-              </Jumbotron> */}
-              <ol className="dropped-files" style={{ marginTop: '20px', minHeight: '20px', border: '1px solid #DDD', borderRadius: '4px' }}>
-                {data.fileList.map(f => { // curly braces will be () if mapping like ListItem above
-                  // <ListItem key={f.name}>
-                  //   {f.name}
-                  // </ListItem>
-                  return (
-                    <li
-                      style={{ color: 'hsl(239, 75%, 50%)', padding: '3px', textAlign: 'left', fontWeight: 'bold' }}
-                      key={f.name}>
-                      {f.name}
-                    </li>
-                  )
-                })}
-              </ol>
-            </>
+            <List>
+              {ideas.map(idea => (
+                <ListItem key={idea._id}>
+                  <Link to={"/ideas/" + idea._id}>
+                    <strong>
+                      {idea.title} by {idea.author}
+                    </strong>
+                  </Link>
+                  <DeleteBtn onClick={() => deleteIdea(idea._id)} />
+                </ListItem>
+              ))}
+            </List>
           ) : (
             <h3>No Results to Display &#9785;</h3>
           )}
@@ -175,6 +154,5 @@ function Ideas() {
     </Container>
   );
 }
-
 
 export default Ideas;
