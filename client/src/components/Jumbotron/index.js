@@ -10,8 +10,10 @@ function Jumbotron({ children }) {
         marginTop: '1rem',
         textAlign: "center",
         background: '#eeeef7',
-        color: "hsl(239, 75%, 40%)",
-        boxShadow: 'inset 0px 0px 15px #a1a1a1'
+        // color: "hsl(239, 75%, 40%)",
+        color: 'hsl(265, 75%, 30%)',
+        // boxShadow: 'inset 0px 0px 15px #a1a1a1'
+        boxShadow: 'inset 0px 0px 15px #afafd0'
       }}
       className="jumbotron"
     >

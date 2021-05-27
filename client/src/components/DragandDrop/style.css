@@ -1,23 +1,23 @@
 .drag-drop-zone {
-    padding: 2.5rem;
-    margin: 0 0 2rem 0;
-    text-align: center;
-    /* background: #07F; */
-    /* background: hsl(0, 0%, 92%); */
-    background: #eeeef7;
-    color: hsl(239, 75%, 50%);
-    /* color: #FFF; */
-    border-radius: 0.5rem;
-    box-shadow: inset 0px 0px 15px #a1a1a1;
-  }
-  .drag-drop-zone p {
-    color: #FFF;
-  }
-  .drag-drop-zone.inside-drag-area {
-    opacity: 0.8;
-  }
+  padding: 2.5rem;
+  margin: 0 0 2rem 0;
+  text-align: center;
+  /* background: #07F; */
+  /* background: hsl(0, 0%, 92%); */
+  background: #eeeef7;
+  /* color: hsl(239, 75%, 50%); */
+  color: hsl(265, 75%, 30%);
+  border-radius: 0.5rem;
+  /* box-shadow: inset 0px 0px 15px #a1a1a1; */
+}
+.drag-drop-zone p {
+  color: #FFF;
+}
+.drag-drop-zone.inside-drag-area {
+  opacity: 0.8;
+}
 
-  .drag-upload-btn:enabled {
-    color: #EEE;
-    background:hsl(239, 75%, 50%);
-  }
+.drag-upload-btn:enabled {
+  color: #EEE;
+  background:hsl(239, 55%, 50%);
+}

@@ -105,38 +105,42 @@ function Ideas() {
               to="/speech"
               style={{ textDecorationColor: 'hsl(239, 75%, 40%)' }}
             >
-              <h4 className="text-success">
-                Or Use Speech to Text &#10132;
-              </h4>
+              <h3 className="text-success">
+                Use Speech to Text
+                {/* &#10132; */}
+              </h3>
             </Link>
           </Jumbotron>
-
-          <form>
-            <Input
-              id="title"
-              onChange={handleInputChange}
-              name="title"
-              placeholder="Title (required)"
-            />
-            <Input
-              id="author"
-              onChange={handleInputChange}
-              name="author"
-              placeholder="Author (required)"
-            />
-            <TextArea
-              id="content"
-              onChange={handleInputChange}
-              name="content"
-              placeholder="Content (Optional)"
-            />
-            <FormBtn
-              disabled={!(formObject.author && formObject.title)}
-              onClick={handleFormSubmit}
-            >
-              Save Idea
+          <div className="card"
+            style={{ background: '#eeeef7', padding: '20px 30px', borderLeft: '4px solid #afafd0', borderBottom: '4px solid #8f8fbd' }}
+          >
+            <form>
+              <Input
+                id="title"
+                onChange={handleInputChange}
+                name="title"
+                placeholder="Title (required)"
+              />
+              <Input
+                id="author"
+                onChange={handleInputChange}
+                name="author"
+                placeholder="Author (required)"
+              />
+              <TextArea
+                id="content"
+                onChange={handleInputChange}
+                name="content"
+                placeholder="Content (Optional)"
+              />
+              <FormBtn
+                disabled={!(formObject.author && formObject.title)}
+                onClick={handleFormSubmit}
+              >
+                Save Idea
             </FormBtn>
-          </form>
+            </form>
+          </div>
         </Col>
         <Col size="md-6 sm-12">
           <DragandDrop data={data} dispatch={dispatch}>

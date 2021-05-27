@@ -94,7 +94,7 @@ function Detail(props) {
       <Row>
         <Col size="md-8 lg-6">
           <div className="card"
-            style={{ background: '#eeeef7', padding: '20px 30px', borderLeft: '4px solid #BBB', borderBottom: '4px solid #AAA' }}
+            style={{ background: '#eeeef7', padding: '20px 30px', borderLeft: '4px solid #afafd0', borderBottom: '4px solid #8f8fbd' }}
           >
             <h3 className="card-title">Type to Edit</h3>
             <form>

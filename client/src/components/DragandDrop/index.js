@@ -7,8 +7,6 @@ import './style.css';
 // Maybe I should Turn the 'Add a New Idea' jumbotron into the Drag and Drop Zone
 const DragAndDrop = props => {
     const { data, dispatch } = props;
-
-    // *** Added to emulate Upload Component ***
     const [file, setFile] = useState('');
     const [filename, setFilename] = useState('Drag and Drop Audio File')
     // const [uploadedFile, setUploadedFile] = useState({});
@@ -83,7 +81,7 @@ const DragAndDrop = props => {
             onDragOver={e => handleDragOver(e)}
             onDragEnter={e => handleDragEnter(e)}
             onDragLeave={e => handleDragLeave(e)}
-            style={{ border: '3px dashed #707070', marginTop: '1rem', padding: '24px' }}
+            style={{ border: '3px dashed #424270', marginTop: '1rem', padding: '24px', boxShadow: 'inset 0px 0px 15px #afafd0' }}
         >
             <input
                 type="file"

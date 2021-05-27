@@ -1,5 +1,6 @@
 .list-overflow-container {
   max-height: 700px;
+  margin-bottom: 1rem;
   border: 1px #DDDDDD solid;
   border-radius: 4px;
   overflow-y: scroll;
@@ -22,7 +23,8 @@
 
 .list-overflow-container li a {
   /* color: #2A878C; */
-  color: hsl(239, 75%, 50%);
+  /* color: hsl(239, 75%, 50%); */
+  color: hsl(265, 75%, 30%);
 }
 
 .list-overflow-container li:first-child {

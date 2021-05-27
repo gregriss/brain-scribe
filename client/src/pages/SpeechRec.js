@@ -323,60 +323,65 @@ const SpeechRec = () => {
                                 Speech to Text
                             </h1>
                         </Jumbotron>
-                        <form>
-                            <div>
-                                <h2>
-                                    Listening for Speech:
+                        <div className="card"
+                            style={{ background: '#eeeef7', padding: '20px 30px', borderLeft: '4px solid #afafd0', borderBottom: '4px solid #8f8fbd' }}
+                        >
+                            <form>
+                                <div>
+                                    <h2>
+                                        Listening for Speech:
                                 {' '}
-                                    {listening ? 'On' : 'Off'}
-                                </h2>
-                            </div>
-                            <div style={{ color: '#FFF' }}>
-                                <button className="btn btn-lg" style={styles.button} type="button" onClick={resetTranscript}><img src={'/reset-icon.svg'} alt='reset' /></button>
-                                <button className="btn btn-lg" style={styles.button} type="button" onClick={stopMic}><img src={'/stop-icon.svg'} alt='stop' /></button>
-                                <button id="record-btn" className="btn btn-lg" style={styles.button} type="button" onClick={listenContinuously}><img src={'/mic-icon-white.svg'} alt='record' /></button>
-                                <Link to="/ideas" style={{ color: "hsl(239, 75%, 40%)", float: "right" }}>← Back to Ideas/Home</Link>
-                            </div>
-                            <Input
-                                id="title"
-                                name="title"
-                                value={title}
-                                placeholder="Title (required)"
-                                onChange={handleInputChange}
-                            />
-                            <Input
-                                id="author"
-                                name="author"
-                                value={author}
-                                placeholder="Author (required)"
-                                onChange={handleInputChange}
-                            />
-                            <TextArea
-                                id="content"
-                                name="content"
-                                defaultValue={transcript}
-                                // value={transcript}
-                                placeholder="(Transcript will appear here)"
-                                onChange={handleInputChange}
-                            >
-                            </TextArea>
-                            <h4>BrainScribe Says:</h4>
-                            <textarea
-                                id="brainscribe-message"
-                                placeholder="Your Wish is My Command..."
-                                defaultValue={message}
-                                // onChange={handleInputChange}
-                                style={{ border: '1px solid #DDD', borderRadius: '4px', minHeight: '50px', width: '100%', marginBottom: '6px' }}
-                            >
-                            </textarea>
-                            <FormBtn
-                                id="save-btn"
-                                disabled={!(formObject.author && formObject.title)}
-                                onClick={handleFormSubmit}
-                            >
-                                Save Idea
+                                        {listening ? 'On' : 'Off'}
+                                    </h2>
+                                </div>
+                                <div style={{ color: '#FFF' }}>
+                                    <button className="btn btn-lg" style={styles.button} type="button" onClick={resetTranscript}><img src={'/reset-icon.svg'} alt='reset' /></button>
+                                    <button className="btn btn-lg" style={styles.button} type="button" onClick={stopMic}><img src={'/stop-icon.svg'} alt='stop' /></button>
+                                    <button id="record-btn" className="btn btn-lg" style={styles.button} type="button" onClick={listenContinuously}><img src={'/mic-icon-white.svg'} alt='record' /></button>
+                                    <Link to="/ideas" style={{ color: "hsl(239, 75%, 40%)", float: "right" }}>← Back to Ideas/Home</Link>
+                                </div>
+
+                                <Input
+                                    id="title"
+                                    name="title"
+                                    value={title}
+                                    placeholder="Title (required)"
+                                    onChange={handleInputChange}
+                                />
+                                <Input
+                                    id="author"
+                                    name="author"
+                                    value={author}
+                                    placeholder="Author (required)"
+                                    onChange={handleInputChange}
+                                />
+                                <TextArea
+                                    id="content"
+                                    name="content"
+                                    defaultValue={transcript}
+                                    // value={transcript}
+                                    placeholder="(Transcript will appear here)"
+                                    onChange={handleInputChange}
+                                >
+                                </TextArea>
+                                <h4>BrainScribe Says:</h4>
+                                <textarea
+                                    id="brainscribe-message"
+                                    placeholder="Your Wish is My Command..."
+                                    defaultValue={message}
+                                    // onChange={handleInputChange}
+                                    style={{ border: '1px solid #DDD', borderRadius: '4px', minHeight: '50px', width: '100%', marginBottom: '6px' }}
+                                >
+                                </textarea>
+                                <FormBtn
+                                    id="save-btn"
+                                    disabled={!(formObject.author && formObject.title)}
+                                    onClick={handleFormSubmit}
+                                >
+                                    Save Idea
                             </FormBtn>
-                        </form>
+                            </form>
+                        </div>
                     </Col>
                 </Row>
             </Container>

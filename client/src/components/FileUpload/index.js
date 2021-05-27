@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const FileUpload = () => {
     const [file, setFile] = useState('');
@@ -11,7 +12,6 @@ const FileUpload = () => {
         setFile(e.target.files[0]);
         setFilename(e.target.files[0].name);
     }
-
     const handleSubmit = async e => {
         e.preventDefault();
         const formData = new FormData();
@@ -23,20 +23,15 @@ const FileUpload = () => {
                     'Content-Type': 'multi-part/form-data'
                 }
             });
-            console.log(res);
+            // console.log(res);
             // const { fileName, filePath } = res.data;
             // setUploadedFile({ fileName, filePath });
         } catch (err) {
             setError('Upload failed. Please check your file type and try again.')
             console.error(err);
-            // if (err.response.status === 500) {
-            //     console.log('There was a problem with the server');
-            // } else {
-            //     console.log(err.response.data.msg);
-            // }
+            console.log(err.response.data.msg);
         }
     }
-
     return (
         <Fragment>
             <form onSubmit={handleSubmit}>
@@ -50,6 +45,16 @@ const FileUpload = () => {
                     <label className="custom-file-label" htmlFor="customFile">{filename}</label>
                 </div>
                 {error && <div className="alert alert-danger" role="alert" style={{ margin: '20px 0' }}>{error}</div>}
+                <Link
+                    to={{
+                        pathname: "https://online-audio-converter.com/"
+                    }}
+                    target='_blank'
+                    className='btn btn-block'
+                    style={{ marginTop: '6px', padding: '6px', fontSize: '22px', color: 'white', background: 'hsl(265, 55%, 40%)', border: '1px solid #DDD', borderRadius: '6px' }}
+                >
+                    Convert File Type
+                </Link>
                 <input
                     type="submit"
                     value="Upload Audio &#8673;"
@@ -57,14 +62,6 @@ const FileUpload = () => {
                     className="btn btn-lg btn-success btn-block mt-2"
                 />
             </form>
-            {/* { uploadedFile ? (
-                <div className="row mt-2">
-                    <div className="col-md-8 m-auto">
-                        <h4 className="text-center">{uploadedFile.fileName}</h4>
-                        <img style={{ width: '100%' }} src={uploadedFile.filePath} alt="" />
-                    </div>
-                </div>
-            ) : null} */}
         </Fragment>
     )
 }
