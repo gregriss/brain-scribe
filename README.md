@@ -8,9 +8,9 @@ Save and organize ideas verbally with Speech-to-Text and React
 
 For this project, I built and deployed a Full Stack Application to Heroku and Github Pages with the MERN Stack: `MongoDB, Express.js, React.js, Node.js`. I also use both the Google Cloud Speech API and the Web Speech API (limited mainly to Chrome browser) for multiple avenues of speech recognition/transcription. 
 
-The project is deployed at this link: ![HERE](https://brain-scribe.herokuapp.com/ideas)
+The project is deployed at this link: (https://brain-scribe.herokuapp.com/ideas)
 
-The Github Repo/code can be viewed here: ![HERE](https://github.com/gregriss/brain-scribe)  
+The Github Repo/code can be viewed here: (https://github.com/gregriss/brain-scribe)  
 
 ## Table of Contents  
 
