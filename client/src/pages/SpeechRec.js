@@ -48,7 +48,6 @@ const SpeechRec = () => {
             command: 'title is *',
             callback: (title) => {
                 setMessage(`Changing the Title to ${title}...`)
-                // document.getElementById('title').value = title
                 setTitle(title)
             }
         },
@@ -62,7 +61,6 @@ const SpeechRec = () => {
         {
             command: 'the title is *',
             callback: (title) => setTitle(title)
-            // document.getElementById('title').value = title
         },
         {
             command: 'my title is *',
@@ -81,23 +79,17 @@ const SpeechRec = () => {
             callback: (author) => {
                 setMessage(`Changing the Author to ${author}...`)
                 setAuthor(author)
-                // document.getElementById('author').value = author
             }
         },
         {
             command: 'make the author *',
-            callback: (author) => {
-                setMessage(`Changing the Author to ${author}...`)
-                setAuthor(author)
-                // document.getElementById('author').value = author
-            }
+            callback: (author) => setAuthor(author)
         },
         {
             command: 'the author is *',
             callback: (author) => {
                 setMessage(`Changing the Author to ${author}...`)
                 setAuthor(author)
-                // document.getElementById('author').value = author
             }
         },
         {
@@ -177,10 +169,9 @@ const SpeechRec = () => {
             callback: () => {
                 stopMic()
                 API.saveIdea({
-                    title: document.getElementById('title').value,
-                    author: document.getElementById('author').value,
-                    // content: transcript
-                    content: document.getElementById('content').value
+                    title: title,
+                    author: author,
+                    content: transcript
                 })
                 setMessage('Saving Now! :)')
             }
@@ -188,15 +179,11 @@ const SpeechRec = () => {
         {
             command: 'save my idea',
             callback: () => {
-                SpeechRecognition.stopListening()
+                stopMic()
                 API.saveIdea({
                     title: title,
                     author: author,
                     content: transcript
-                    // title: document.getElementById('title').value,
-                    // author: document.getElementById('author').value,
-                    // // content: transcript
-                    // content: document.getElementById('content').value
                 })
                 setMessage('Saving Now! :)')
             }
@@ -206,10 +193,9 @@ const SpeechRec = () => {
             callback: () => {
                 stopMic()
                 API.saveIdea({
-                    title: document.getElementById('title').value,
-                    author: document.getElementById('author').value,
-                    // content: transcript
-                    content: document.getElementById('content').value
+                    title: title,
+                    author: author,
+                    content: transcript
                 })
                 setMessage('Idea saving :)')
             }
@@ -219,10 +205,9 @@ const SpeechRec = () => {
             callback: () => {
                 stopMic()
                 API.saveIdea({
-                    title: document.getElementById('title').value,
-                    author: document.getElementById('author').value,
-                    // content: transcript
-                    content: document.getElementById('content').value
+                    title: title,
+                    author: author,
+                    content: transcript
                 })
                 setMessage('Done :)')
             }
@@ -239,14 +224,15 @@ const SpeechRec = () => {
     // check out whether I can update TextArea state in a useEffect
     useEffect(() => {
         if (finalTranscript !== '') {
-            console.log('Got final result:', finalTranscript);
+            console.log('Final result:', finalTranscript);
         }
     }, [interimTranscript, finalTranscript]);
 
     if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
         console.log('Your browser does not support speech recognition software! Try Chrome desktop, maybe?');
     }
-
+    // starts the listening/transcription process, set to listen continuously (false would stop recording if speaker pauses)
+    // sets language to English, change color of record button and Heading to tell user the app is recording!
     const listenContinuously = () => {
         SpeechRecognition.startListening({
             continuous: true,
@@ -256,7 +242,7 @@ const SpeechRec = () => {
         document.getElementById('header-text').textContent = 'Recording!';
         document.getElementById('header-text').style.color = '#E74724';
     };
-
+    // stops recording/listening, changes record button and heading color back to normal setting
     const stopMic = () => {
         SpeechRecognition.stopListening({})
         console.log('Stop Recording');
@@ -273,10 +259,10 @@ const SpeechRec = () => {
 
     function handleFormSubmit(event) {
         event.preventDefault();
-        if (formObject.title && formObject.author) {
+        if (title && author) {
             API.saveIdea({
-                title: formObject.title,
-                author: formObject.author,
+                title: title,
+                author: author,
                 content: transcript
             })
                 .then(res => resetTranscript())
@@ -307,7 +293,7 @@ const SpeechRec = () => {
         return (
             <Container fluid>
                 <Row>
-                    <Col size="xl-6 lg-9 md-12">
+                    <Col size="md-6">
                         <Jumbotron>
                             <h1 id="header-text">
                                 Speech to Text
@@ -364,7 +350,7 @@ const SpeechRec = () => {
                                 </textarea>
                                 <FormBtn
                                     id="save-btn"
-                                    disabled={!(formObject.author && formObject.title)}
+                                    disabled={!author || !title}
                                     onClick={handleFormSubmit}
                                 >
                                     Save Idea
