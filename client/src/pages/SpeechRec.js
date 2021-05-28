@@ -372,6 +372,55 @@ const SpeechRec = () => {
                             </form>
                         </div>
                     </Col>
+                    <Col size="md-6">
+                        <Jumbotron>
+                            <h2>
+                                Commands to Try
+                            </h2>
+                        </Jumbotron>
+                        <div className="card"
+                            style={{ background: '#eeeef7', color: 'hsl(265, 75%, 30%)', padding: '20px 30px', borderLeft: '4px solid #afafd0', borderBottom: '4px solid #8f8fbd' }}
+                        >
+                            <h3>Making an Entry</h3>
+                            <ul style={{ margin: '10px 10px 10px -20px' }}>
+                                <li>
+                                    First, Click the Record Button (Purple Mic Icon)
+                                </li>
+                                <hr />
+                                <li>
+                                    Try saying <strong>"title is ..."</strong> and then your Title to set the title input. <strong>"My title is ..."</strong>, <strong>"The title is..."</strong> or <strong>"make the title..."</strong> also work.
+                                </li>
+                                <hr />
+                                <li>
+                                    Try saying <strong>"author is ..."</strong> and then your Author name to set the title input. Similar re-wording works here, as for the title.
+                                </li>
+                                <hr />
+                                <li>
+                                    <strong>"Stop"</strong> will pause/stop the app from listening/transcribing your speech, but press Record again to pick up where you left off.
+                                </li>
+                                <hr />
+                                <li>
+                                    Say <strong>"reset"</strong> to reset the Transcript input field. The Software performs better if there is a slight pause before uttering the command.
+                                </li>
+                                <hr />
+                                <li>
+                                    Save an Idea with the Green Button at the bottom, or by saying <strong>"save this idea"</strong>.
+                                </li>
+                                <hr />
+                                <li>
+                                    You can say <strong>"open ..."</strong> plus the name of a web page, and the browser opens that page in a new tab.
+                                </li>
+                                <hr />
+                                <li>
+                                    If the color scheme is too boring for you, you could also try saying <strong>"Make the background red!"</strong>.
+                                </li>
+                                <hr />
+                                <li>
+                                    Don't worry if your transcription isn't perfect. You can edit it from the Homepage after saving. Happy Speaking!!!
+                                </li>
+                            </ul>
+                        </div>
+                    </Col>
                 </Row>
             </Container>
         )
