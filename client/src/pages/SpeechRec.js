@@ -8,8 +8,6 @@ import { Input, TextArea, FormBtn } from "../components/Form";
 
 const styles = {
     button: {
-        // background: 'hsl(239, 75%, 70%)',
-        // background: 'hsl(239, 65%, 55%)',
         background: 'hsl(265, 75%, 30%)',
         height: '60px',
         width: '60px',

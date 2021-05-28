@@ -1,4 +1,4 @@
-# brain-scribe
+# BrainScribe
 Save and organize ideas verbally with Speech-to-Text and React
 
 # My Web Development Portfolio 
@@ -6,11 +6,11 @@ Save and organize ideas verbally with Speech-to-Text and React
 
 ## Description
 
-For this project, I built and deployed a responsive personal portfolio with React.js to showcase my Web Development projects and provide some information about myself.
+For this project, I built and deployed a Full Stack Application to Heroku and Github Pages with the MERN Stack: `MongoDB, Express.js, React.js, Node.js`. I also use both the Google Cloud Speech API and the Web Speech API (limited mainly to Chrome browser) for multiple avenues of speech recognition/transcription. 
 
-The project is deployed [HERE](https://brain-scribe.herokuapp.com/ideas)
+The project is deployed at this link: ![HERE](https://brain-scribe.herokuapp.com/ideas)
 
-The code can be viewed [HERE](https://github.com/gregriss/brain-scribe)  
+The Github Repo/code can be viewed here: ![HERE](https://github.com/gregriss/brain-scribe)  
 
 ## Table of Contents  
 
@@ -21,22 +21,26 @@ The code can be viewed [HERE](https://github.com/gregriss/brain-scribe)
 
 ## Usage
 
-This app lets you document your ideas in many ways. My hope is that it is simple and clear to use. On the homepage, you have options to type and save an idea, drag and drop an audio file (wav, flac, mp3, or amr format only) into the Drop zone, or manually Browse and select a file to upload. From there, the app will save your idea to a database, and you can access the ideas in the My Ideas list. 
+This app lets you document your ideas in many ways. My hope is that it is simple and clear to use.   
 
-Here's a screenshot of the Homepage:
+### Homepage
+On the homepage, you have options to type and save an idea, drag and drop an audio file (wav, flac, mp3, or amr format only) into the Drop zone, or manually Browse and select a file to upload. From there, the app will save your idea to a database, and you can access the ideas in the My Ideas list. 
 ![Greg's Homepage](resources/homepage.png)
 
-Click on an idea, and you'll be taken to a page where you can view the content of that idea and make updates as you wish. Be advised that if you want to update the idea, you must make an edit in each of the three form fields for the Idea to update correctly. 
+### Ideas/Updating
+Click on an idea, and you'll be taken to a page where you can view the content of that idea and make updates as you wish. Be advised that if you want to update the idea, you must make an edit in each of the three form fields for the Idea to update correctly. The React app monitors the state of the form fields and then re-saves the Idea to the database upon submission.
 
-![Detail](resources/detail-page.png)
+![Detail](resources/detail-page.png)  
 
-On the Speech to Text page (if using Chrome or Edge browsers), you have the ability to click record, and speak into a microphone (after giving mic access to your browser). You can give commands such as `title is ...` and `author is ...` to set those fields on the page. Say `stop` to stop recording. You can also say `reset` to clear the Content Field and start your idea again. Try saying `save this idea` and the App will stop the micriphone and save the idea to the database. Also try saying `open ` followed by any website, such as Google, and BrainScribe will open that page in a separate tab! 
+### Speech to Text/Streaming Text Recognition  
+
+On the Speech to Text page (if using Chrome or Edge browsers), you have the ability to click record, and speak into a microphone (after giving mic access to your browser). You can give commands such as `title is ...` and `author is ...` to set those fields on the page. Say `stop` to stop recording. You can also say `reset` to clear the Content Field and start your idea again. Try saying `save this idea` and the App will stop the micriphone and save the idea to the database. Additionally, the software allows users to save Ideas to the database using the command `save this idea`, or just `save`. Also try saying `open ` followed by the name of any website, such as Google or Facebook, and BrainScribe will open that page in a separate tab for you! 
 
 ![Speech to Text](resources/speech-page.png)
 
 # Tech  
 
-This App was built with MongoDB/Cloud Atlas, Express.js server, React.js, and Node.js. I also used Boostrap, as well as multiple APIs and npm packages, including Google Cloud Speech API, the Web Speech API/React Speech Recognition package, the HTML Drag and Drop API, Express File Upload package.  
+This App was built with MongoDB/Cloud Atlas, Express.js server, React.js, and Node.js. I also used Boostrap and SASS, as well as the Google Cloud Speech API, the Web Speech API/React Speech Recognition package, the HTML Drag and Drop API, and the Express File Upload package.  
 
 ## License
 
