@@ -1,6 +1,7 @@
-# BrainScribe
-Save and organize ideas verbally with Speech-to-Text and React  
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+# BrainScribe  
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  
+
+Save and update ideas verbally, manually, or both with Speech-to-Text and React.
 
 ## Description
 
@@ -14,8 +15,8 @@ For this project, I built and deployed a Full Stack Application to Heroku and Gi
 
 - [Usage](#usage) 
 - [Homepage](#homepage)
-- [Ideas](#ideas)
-- [Speech-to-Text](#speech)
+- [Ideas](#ideas)  
+- [STT](#stt)
 - [Tech Used](#tech)
 - [License](#license)  
 - [Questions](#questions)
@@ -33,7 +34,7 @@ Click on an idea, and you'll be taken to a page where you can view the content o
 
 ![Detail](resources/detail-page.png)  
 
-### Speech to Text/Streaming Text Recognition  
+### STT Speech-to-Text and Streaming Text Recognition  
 On the Speech to Text page (if using Chrome or Edge browsers), you have the ability to click record, and speak into a microphone (after giving mic access to your browser). You can give commands such as `title is ...` and `author is ...` to set those fields on the page. Say `stop` to stop recording. You can also say `reset` to clear the Content Field and start your idea again. Try saying `save this idea` and the App will stop the micriphone and save the idea to the database. Additionally, the software allows users to save Ideas to the database using the command `save this idea`, or just `save`. Also try saying `open ` followed by the name of any website, such as Google or Facebook, and BrainScribe will open that page in a separate tab for you! 
 
 ![Speech to Text](resources/speech-page.png)
