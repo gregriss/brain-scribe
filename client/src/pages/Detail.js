@@ -58,7 +58,8 @@ function Detail(props) {
         .catch(err => console.log(err));
     }
   };
-
+  // let dateStr = idea.date;
+  // let dateSub = dateStr.substring(0, 9);
   return (
     <Container fluid>
       <Row>
@@ -69,32 +70,37 @@ function Detail(props) {
             >
               {idea.title} by {idea.author}
             </h2>
-            {/* <h5>{idea.date}</h5> */}
+            {/* <h5>{idea.date}</h5>
+            <h5>{dateSub}</h5> */}
           </Jumbotron>
         </Col>
       </Row>
       <Row >
         <Col size="md-6">
-          <div style={{ marginBottom: '20px' }}>
-            <Link
-              to="/ideas"
-              style={{ color: "hsl(239, 75%, 40%)", margin: '0 15px 0 0' }}
-            >
-              ← Back to Ideas
+          <div style={{ display: 'flex', justifyContent: 'space-between', color: "hsl(239, 75%, 40%)", marginBottom: '20px' }}>
+            <h4>
+              <Link
+                to="/ideas"
+                style={{ color: "hsl(239, 75%, 40%)", margin: '0 15px 0 0' }}
+              >
+                ← Back to Ideas
             </Link>
-            <Link
-              to="/speech"
-              style={{ color: "hsl(239, 75%, 40%)" }}
-            >
-              Add Idea with Speech to Text &#10132;
+            </h4>
+            <h4>
+              <Link
+                to="/speech"
+                style={{ color: "hsl(239, 75%, 40%)" }}
+              >
+                Add Idea with Speech to Text &#10132;
             </Link>
+            </h4>
           </div>
         </Col>
       </Row>
       <Row>
         <Col size="md-8 lg-6">
           <div className="card"
-            style={{ background: '#eeeef7', padding: '20px 30px', borderLeft: '4px solid #afafd0', borderBottom: '4px solid #8f8fbd' }}
+            style={{ color: 'hsl(265, 75%, 30%)', background: '#eeeef7', padding: '20px 30px', borderLeft: '4px solid #afafd0', borderBottom: '4px solid #8f8fbd' }}
           >
             <h3 className="card-title">Type to Edit</h3>
             <form>
