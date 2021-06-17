@@ -41,7 +41,7 @@ On the Speech to Text page (if using Chrome or Edge browsers), you have the abil
 
 ## Tech  
 
-This App was built with MongoDB/Cloud Atlas, Express.js server, React.js, and Node.js. I also used Boostrap and SASS, as well as the Google Cloud Speech API, the Web Speech API/React Speech Recognition package, the HTML Drag and Drop API, and the Express File Upload package.  
+This App was built with MongoDB/Cloud Atlas, Express.js server, React.js, and Node.js. I also used Boostrap and SASS, as well as the Google Cloud Speech API, the Web Speech API/React Speech Recognition package, the HTML Drag and Drop API, Axios Library, and the Express File Upload package.  
 
 ## License
 

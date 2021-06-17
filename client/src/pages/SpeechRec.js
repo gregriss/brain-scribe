@@ -310,11 +310,13 @@ const SpeechRec = () => {
                                         {listening ? 'On' : 'Off'}
                                     </h2>
                                 </div>
-                                <div style={{ color: '#FFF' }}>
-                                    <button className="btn btn-lg" style={styles.button} type="button" onClick={resetTranscript}><img src={'/reset-icon.svg'} alt='reset' /></button>
-                                    <button className="btn btn-lg" style={styles.button} type="button" onClick={stopMic}><img src={'/stop-icon.svg'} alt='stop' /></button>
-                                    <button id="record-btn" className="btn btn-lg" style={styles.button} type="button" onClick={listenContinuously}><img src={'/mic-icon-white.svg'} alt='record' /></button>
-                                    <Link to="/ideas" style={{ color: "hsl(239, 75%, 40%)", float: "right" }}>← Back to Ideas/Home</Link>
+                                <div style={{ color: '#FFF', display: 'flex', justifyContent: 'space-between' }}>
+                                    <div>
+                                        <button className="btn btn-lg" style={styles.button} type="button" onClick={resetTranscript}><img src={'/reset-icon.svg'} alt='reset' /></button>
+                                        <button className="btn btn-lg" style={styles.button} type="button" onClick={stopMic}><img src={'/stop-icon.svg'} alt='stop' /></button>
+                                        <button id="record-btn" className="btn btn-lg" style={styles.button} type="button" onClick={listenContinuously}><img src={'/mic-icon-white.svg'} alt='record' /></button>
+                                    </div>
+                                    <h4><Link to="/ideas" style={{ color: "hsl(239, 75%, 40%)" }}>← Back to Ideas/Home</Link></h4>
                                 </div>
                                 <Input
                                     id="title"
@@ -360,17 +362,17 @@ const SpeechRec = () => {
                     </Col>
                     <Col size="md-6">
                         <Jumbotron>
-                            <h2>
-                                Commands to Try
-                            </h2>
+                            <h1>
+                                Helpful Hints
+                            </h1>
                         </Jumbotron>
                         <div className="card"
                             style={{ background: '#eeeef7', color: 'hsl(265, 75%, 30%)', padding: '20px 30px', borderLeft: '4px solid #afafd0', borderBottom: '4px solid #8f8fbd' }}
                         >
-                            <h3>Making an Entry</h3>
+                            {/* <h3>Making an Entry</h3> */}
                             <ul style={{ margin: '10px 10px 10px -20px' }}>
                                 <li>
-                                    First, Click the Record Button (Purple Mic Icon)
+                                    First, Click the Record Button (Purple Mic Icon) The button will turn <strong style={{ color: '#E74724' }}>red</strong> if BrainScribe is recording.
                                 </li>
                                 <hr />
                                 <li>
@@ -378,7 +380,7 @@ const SpeechRec = () => {
                                 </li>
                                 <hr />
                                 <li>
-                                    Try saying <strong>"author is ..."</strong> and then your Author name to set the title input. Similar re-wording works here, as for the title.
+                                    Try saying <strong>"author is ..."</strong> and then your Author name to set the title input. Similar re-wording works here as for the title.
                                 </li>
                                 <hr />
                                 <li>
@@ -390,11 +392,11 @@ const SpeechRec = () => {
                                 </li>
                                 <hr />
                                 <li>
-                                    Save an Idea with the Green Button at the bottom, or by saying <strong>"save this idea"</strong>.
+                                    Click the Green `Save Idea` Button to save, or if BrainScribe is still recording, try saying <strong>"save this idea"</strong>.
                                 </li>
                                 <hr />
                                 <li>
-                                    You can say <strong>"open ..."</strong> plus the name of a web page, and the browser opens that page in a new tab.
+                                    You can say <strong>"open ..."</strong> plus the name of a web page, and the browser opens that page in a new tab. For example, <strong>"Open Google"</strong> will open `https://www.google.com/`.
                                 </li>
                                 <hr />
                                 <li>
