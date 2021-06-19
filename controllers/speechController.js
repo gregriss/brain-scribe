@@ -1,7 +1,7 @@
 require('dotenv').config();
 const speech = require('@google-cloud/speech');
 const fs = require('fs');
-const path = require('path');
+// const path = require('path');
 
 const Text = {
     getText: async function (filename, ext) {
@@ -13,49 +13,47 @@ const Text = {
         const audio = {
             content: audioBytes
         };
-        // TODO Switch statement here? To check which encoding?
-        // Refactor when I have more energy
-        let config;
 
-        if (ext === "flac") {
-            // do not need to specify encoding for flac; it's included in file header
-            config = {
-                // encoding: 'FLAC',
-                sampleRateHertz: 48000,
-                audioChannelCount: 2,
-                languageCode: 'en-US'
-            };
-        }
-        else if (ext === "wav") {
-            // do not need to specify encoding for wav; it's included in file header
-            config = {
-                // encoding: 'LINEAR16',
-                sampleRateHertz: 44100,
-                audioChannelCount: 2,
-                languageCode: 'en-US'
-            }
-        }
-        else if (ext === "mp3") {
-            // sampleRateHertz must match the file exactly; mp3 have only worked 
-            // after using online audio converter
-            config = {
-                encoding: 'MP3',
-                sampleRateHertz: 44100,
-                audioChannelCount: 2,
-                languageCode: 'en-US'
-            }
-        }
-        else if (ext === "amr") {
-            config = {
-                encoding: 'AMR',
-                sampleRateHertz: '8000',
-                audioChannelCount: 1,
-                languageCode: 'en-US'
-            }
-        }
-        else {
-            console.log('Error occured');
-            return;
+        let config;
+        switch (ext) {
+            case "flac":
+                // do not need to specify encoding for flac; it's included in file header
+                config = {
+                    // encoding: 'FLAC',
+                    sampleRateHertz: 48000,
+                    audioChannelCount: 2,
+                    languageCode: 'en-US'
+                }
+                break;
+            case "wav":
+                // do not need to specify encoding for wav; it's included in file header
+                config = {
+                    // encoding: 'LINEAR16',
+                    sampleRateHertz: 44100,
+                    audioChannelCount: 2,
+                    languageCode: 'en-US'
+                }
+                break;
+            case "mp3":
+                // sampleRateHertz must match the file exactly; mp3 have only worked 
+                // after using online audio converter
+                config = {
+                    encoding: 'MP3',
+                    sampleRateHertz: 44100,
+                    audioChannelCount: 2,
+                    languageCode: 'en-US'
+                }
+                break;
+            case "amr":
+                config = {
+                    encoding: 'AMR',
+                    sampleRateHertz: '8000',
+                    audioChannelCount: 1,
+                    languageCode: 'en-US'
+                }
+                break;
+            default:
+                console.log('Error occured');
         }
 
         const request = {
